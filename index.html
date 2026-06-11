@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polygon Digital — Independent Finance Research</title>
+    <meta name="description" content="Polygon Digital — independent research on energy markets, quantitative finance, and machine intelligence. Weekly notes by Rishi B." />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/app-icon-180.png" />
+    <script>
+      // Set theme before first paint to avoid a flash of the wrong background
+      (function () {
+        var t = localStorage.getItem('pd-theme') || 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
