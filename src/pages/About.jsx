@@ -34,24 +34,6 @@ export default function About() {
           Understand the flow and the price makes sense. That is the
           arbitrage.
         </blockquote>
-
-        <hr />
-
-        <h2>The author</h2>
-        <p>
-          Written by <strong>Rishi B.</strong>, an energy analyst based in
-          Calgary, Canada. The views here are personal research notes, not
-          investment advice and not the views of any employer.
-        </p>
-
-        <hr />
-
-        <h2>Colophon</h2>
-        <p>
-          Set in Sora, Manrope, and IBM Plex Mono. Two colours: ink and
-          paper. Built with React, published from plain Markdown files —
-          one file per note.
-        </p>
       </div>
 
       <div className="about-mark">
