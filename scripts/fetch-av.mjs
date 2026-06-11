@@ -46,11 +46,13 @@ const num = (v) => {
   return Number.isFinite(n) ? n : null
 }
 
-// most recent non-missing value in an AV economic data series
-const latest = (json) => {
-  const row = (json.data || []).find((d) => d.value !== '.')
-  return row ? { value: num(row.value), date: row.date } : null
-}
+// AV economic series arrive newest-first; return chronological [{date, value}]
+const seriesOf = (json, keep) =>
+  (json.data || [])
+    .filter((d) => d.value !== '.')
+    .slice(0, keep)
+    .map((d) => ({ date: d.date, value: num(d.value) }))
+    .reverse()
 
 const out = { updated: new Date().toISOString(), movers: null, macro: [], news: [] }
 
@@ -75,50 +77,59 @@ try {
   console.warn('  movers failed:', e.message)
 }
 
-// — macro —
+// — macro — each entry keeps its full series so the page can chart it
 const MACRO_CALLS = [
-  ['10Y TREASURY', { function: 'TREASURY_YIELD', interval: 'daily', maturity: '10year' }, '%'],
-  ['2Y TREASURY', { function: 'TREASURY_YIELD', interval: 'daily', maturity: '2year' }, '%'],
-  ['FED FUNDS', { function: 'FEDERAL_FUNDS_RATE', interval: 'daily' }, '%'],
-  ['UNEMPLOYMENT', { function: 'UNEMPLOYMENT' }, '%'],
+  ['10Y TREASURY', { function: 'TREASURY_YIELD', interval: 'daily', maturity: '10year' }, '%', 380],
+  ['2Y TREASURY', { function: 'TREASURY_YIELD', interval: 'daily', maturity: '2year' }, '%', 380],
+  ['FED FUNDS', { function: 'FEDERAL_FUNDS_RATE', interval: 'daily' }, '%', 380],
+  ['UNEMPLOYMENT', { function: 'UNEMPLOYMENT' }, '%', 48],
 ]
 
 const macroRaw = {}
-for (const [label, params, unit] of MACRO_CALLS) {
+for (const [label, params, unit, keep] of MACRO_CALLS) {
   try {
     console.log(`Fetching ${label}...`)
-    const point = latest(await av(params))
-    if (point) {
-      macroRaw[label] = point
-      out.macro.push({ label, value: point.value, unit, date: point.date })
+    const series = seriesOf(await av(params), keep)
+    if (series.length > 0) {
+      const last = series[series.length - 1]
+      macroRaw[label] = series
+      out.macro.push({ label, value: last.value, unit, date: last.date, series })
     }
   } catch (e) {
     console.warn(`  ${label} failed:`, e.message)
   }
 }
 
-// CPI: compute year-over-year % from the monthly index
+// CPI: year-over-year % series computed from the monthly index
 try {
   console.log('Fetching CPI...')
-  const j = await av({ function: 'CPI', interval: 'monthly' })
-  const rows = (j.data || []).filter((d) => d.value !== '.')
-  if (rows.length > 12) {
-    const yoy = (num(rows[0].value) / num(rows[12].value) - 1) * 100
-    out.macro.push({ label: 'CPI YOY', value: Math.round(yoy * 100) / 100, unit: '%', date: rows[0].date })
+  const rows = seriesOf(await av({ function: 'CPI', interval: 'monthly' }), 600)
+  const yoySeries = []
+  for (let i = 12; i < rows.length; i++) {
+    yoySeries.push({
+      date: rows[i].date,
+      value: Math.round((rows[i].value / rows[i - 12].value - 1) * 10000) / 100,
+    })
+  }
+  const series = yoySeries.slice(-48)
+  if (series.length > 0) {
+    const last = series[series.length - 1]
+    out.macro.push({ label: 'CPI YOY', value: last.value, unit: '%', date: last.date, series })
   }
 } catch (e) {
   console.warn('  CPI failed:', e.message)
 }
 
-// 2s10s spread, derived — the recession-watch number
+// 2s10s spread series, derived — the recession-watch number
 if (macroRaw['10Y TREASURY'] && macroRaw['2Y TREASURY']) {
-  const spread = (macroRaw['10Y TREASURY'].value - macroRaw['2Y TREASURY'].value) * 100
-  out.macro.splice(2, 0, {
-    label: '2S10S SPREAD',
-    value: Math.round(spread),
-    unit: 'bp',
-    date: macroRaw['10Y TREASURY'].date,
-  })
+  const twos = new Map(macroRaw['2Y TREASURY'].map((p) => [p.date, p.value]))
+  const series = macroRaw['10Y TREASURY']
+    .filter((p) => twos.has(p.date))
+    .map((p) => ({ date: p.date, value: Math.round((p.value - twos.get(p.date)) * 100) }))
+  if (series.length > 0) {
+    const last = series[series.length - 1]
+    out.macro.splice(2, 0, { label: '2S10S SPREAD', value: last.value, unit: 'bp', date: last.date, series })
+  }
 }
 
 // — news sentiment —

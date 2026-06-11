@@ -29,6 +29,9 @@ const AV_KEY = process.env.ALPHAVANTAGE_KEY ?? ''
 // Top 10 US-listed companies by market cap — edit freely.
 const STOCKS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'AVGO', 'TSLA', 'BRK-B', 'LLY']
 
+// 10 more S&P large caps for the /markets S&P 500 marquee (with STOCKS = 20 names)
+const SP500_EXTRA = ['JPM', 'V', 'XOM', 'MA', 'UNH', 'COST', 'HD', 'PG', 'JNJ', 'ORCL']
+
 const COMMODITIES = [
   ['CL=F', 'WTI'],
   ['BZ=F', 'BRENT'],
@@ -67,21 +70,29 @@ async function yahoo(symbol, label) {
   return { sym: label ?? symbol, price, chg: ((price - prev) / prev) * 100 }
 }
 
-// like yahoo() but keeps a month of daily closes for sparklines
+// like yahoo() but keeps a year of daily closes for charts/sparklines
 async function yahooSeries(symbol, label) {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1mo&interval=1d`
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1y&interval=1d`
   const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (polygond.com market ticker)' } })
   if (!res.ok) throw new Error(`${symbol}: HTTP ${res.status}`)
   const result = (await res.json())?.chart?.result?.[0]
   const price = result?.meta?.regularMarketPrice
-  const closes = (result?.indicators?.quote?.[0]?.close || []).filter((c) => typeof c === 'number')
-  if (typeof price !== 'number' || closes.length < 2) throw new Error(`${symbol}: missing series`)
-  const prev = closes[closes.length - 2]
+  const stamps = result?.timestamp || []
+  const closes = result?.indicators?.quote?.[0]?.close || []
+  const pairs = stamps
+    .map((t, i) => [t, closes[i]])
+    .filter(([, c]) => typeof c === 'number')
+  if (typeof price !== 'number' || pairs.length < 2) throw new Error(`${symbol}: missing series`)
+  const values = pairs.map(([, c]) => Math.round(c * 100) / 100)
+  const prev = values[values.length - 2]
   return {
     sym: label,
     price,
     chg: ((price - prev) / prev) * 100,
-    spark: closes.slice(-22).map((c) => Math.round(c * 100) / 100),
+    series: {
+      dates: pairs.map(([t]) => new Date(t * 1000).toISOString().slice(0, 10)),
+      values,
+    },
   }
 }
 
@@ -141,6 +152,8 @@ console.log('Fetching indices...')
 const indices = await settle(INDICES.map(([s, label]) => yahooSeries(s, label)))
 console.log('Fetching equities...')
 const stocks = await settle(STOCKS.map((s) => stockQuote(s)))
+console.log('Fetching S&P 500 extras...')
+const sp500 = [...stocks, ...(await settle(SP500_EXTRA.map((s) => stockQuote(s))))]
 console.log('Fetching commodities...')
 const commodities = await settle(COMMODITIES.map(([s, label]) => yahoo(s, label)))
 console.log('Fetching crypto...')
@@ -156,7 +169,7 @@ if (stocks.length === 0 && crypto.length === 0 && commodities.length === 0) {
   process.exit(1)
 }
 
-const out = { updated: new Date().toISOString(), indices, stocks, crypto, commodities }
+const out = { updated: new Date().toISOString(), indices, stocks, sp500, crypto, commodities }
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n')
 console.log(
   `Wrote market.json — ${indices.length} indices, ${stocks.length} stocks, ${crypto.length} crypto, ${commodities.length} commodities`,

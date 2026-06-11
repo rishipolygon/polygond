@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
-// Markets dashboard. Structure runs hot -> cold:
-//   1. Snapshot   — indices + VIX + DXY with sparklines (market.json / Yahoo)
-//   2. Rates      — treasuries, 2s10s, fed funds, CPI, unemployment (avdata.json / AV)
-//   3. Movers     — tabbed gainers / losers / most active (avdata.json / AV)
-//   4. The tape   — sentiment-filterable headlines (avdata.json / AV)
+// Markets dashboard ("The Polygon Index"). Structure runs hot -> cold:
+//   1. Snapshot   — indices + VIX + DXY, click any card to chart it
+//   2. Rates      — macro stats, click any cell to chart its history
+//   3. Movers     — S&P 500 marquee + tabbed gainers / losers / most active
+//   4. The tape   — sentiment-filterable headlines, scrollable
 
 function fmtPrice(p) {
   if (p == null) return '—'
@@ -46,6 +46,103 @@ function Sparkline({ data }) {
   )
 }
 
+// ——— interactive chart (hover crosshair, no libraries) ———
+
+const W = 600
+const H = 200
+
+function Chart({ dates, values, unit }) {
+  const [hi, setHi] = useState(null)
+  if (!values || values.length < 2) return null
+  const min = Math.min(...values)
+  const max = Math.max(...values)
+  const range = max - min || 1
+  const x = (i) => (i / (values.length - 1)) * W
+  const y = (v) => H - 8 - ((v - min) / range) * (H - 20)
+  const pts = values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')
+  const fmtV = (v) => `${v >= 1000 ? v.toLocaleString('en-US', { maximumFractionDigits: 0 }) : v}${unit || ''}`
+  const onMove = (e) => {
+    const r = e.currentTarget.getBoundingClientRect()
+    const i = Math.round(((e.clientX - r.left) / r.width) * (values.length - 1))
+    setHi(Math.max(0, Math.min(values.length - 1, i)))
+  }
+
+  return (
+    <div className="chart-wrap">
+      <div className="chart-readout">
+        {hi != null
+          ? `${dates[hi]} · ${fmtV(values[hi])}`
+          : `HIGH ${fmtV(max)} · LOW ${fmtV(min)}`}
+      </div>
+      <svg
+        className="chart-svg"
+        viewBox={`0 0 ${W} ${H}`}
+        preserveAspectRatio="none"
+        onMouseMove={onMove}
+        onMouseLeave={() => setHi(null)}
+      >
+        <polyline points={pts} fill="none" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+        {hi != null && (
+          <line
+            x1={x(hi)}
+            x2={x(hi)}
+            y1="0"
+            y2={H}
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.3"
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
+      </svg>
+      <div className="chart-axis">
+        <span>{dates[0]}</span>
+        <span>{dates[dates.length - 1]}</span>
+      </div>
+    </div>
+  )
+}
+
+const RANGES = [
+  { key: '1M', points: 22 },
+  { key: '6M', points: 126 },
+  { key: '1Y', points: 252 },
+]
+
+function ChartDrawer({ sel, onClose }) {
+  const [range, setRange] = useState('6M')
+  const daily = sel.values.length > 60 // monthly series get no range toggle
+  const n = daily ? (RANGES.find((r) => r.key === range)?.points ?? sel.values.length) : sel.values.length
+  const values = sel.values.slice(-n)
+  const dates = sel.dates.slice(-n)
+
+  return (
+    <div className="chart-drawer">
+      <div className="chart-head">
+        <span className="kicker">{sel.label}</span>
+        <div className="chart-controls">
+          {daily &&
+            RANGES.map((r) => (
+              <button
+                key={r.key}
+                className={`tab-btn${range === r.key ? ' active' : ''}`}
+                onClick={() => setRange(r.key)}
+              >
+                {r.key}
+              </button>
+            ))}
+          <button className="tab-btn chart-close" onClick={onClose} aria-label="Close chart">
+            ✕
+          </button>
+        </div>
+      </div>
+      <Chart dates={dates} values={values} unit={sel.unit} />
+    </div>
+  )
+}
+
+// ——— sections ———
+
 const MOVER_TABS = [
   { key: 'gainers', label: 'GAINERS' },
   { key: 'losers', label: 'LOSERS' },
@@ -66,11 +163,12 @@ const sentimentGroup = (label) => {
 }
 
 export default function Markets() {
-  const [snap, setSnap] = useState(null) // market.json (indices)
-  const [dash, setDash] = useState(null) // avdata.json (macro/movers/news)
+  const [snap, setSnap] = useState(null)
+  const [dash, setDash] = useState(null)
   const [failed, setFailed] = useState(false)
   const [tab, setTab] = useState('gainers')
   const [newsFilter, setNewsFilter] = useState('all')
+  const [sel, setSel] = useState(null) // { kind, label, unit, dates, values }
 
   useEffect(() => {
     const base = import.meta.env.BASE_URL
@@ -109,6 +207,43 @@ export default function Markets() {
   const news = (dash?.news || []).filter(
     (n) => newsFilter === 'all' || sentimentGroup(n.label) === newsFilter,
   )
+  const sp500 = snap?.sp500 || []
+
+  const toggleIndex = (ix) => {
+    if (!ix.series) return
+    setSel(
+      sel?.kind === 'index' && sel.label === ix.sym
+        ? null
+        : { kind: 'index', label: ix.sym, unit: '', dates: ix.series.dates, values: ix.series.values },
+    )
+  }
+
+  const toggleMacro = (m) => {
+    if (!m.series) return
+    setSel(
+      sel?.kind === 'macro' && sel.label === m.label
+        ? null
+        : {
+            kind: 'macro',
+            label: m.label,
+            unit: m.unit,
+            dates: m.series.map((p) => p.date),
+            values: m.series.map((p) => p.value),
+          },
+    )
+  }
+
+  const spTrack = (copy) => (
+    <div className="ticker-track" aria-hidden={copy > 0}>
+      {sp500.map((s) => (
+        <span className="ticker-item" key={`${copy}-${s.sym}`}>
+          <span className="ticker-sym">{s.sym}</span>
+          <span className="ticker-price">{fmtPrice(s.price)}</span>
+          <span className={`ticker-chg${s.chg < 0 ? ' down' : ''}`}>{fmtChg(s.chg)}</span>
+        </span>
+      ))}
+    </div>
+  )
 
   return (
     <section className="page">
@@ -118,7 +253,7 @@ export default function Markets() {
         <p className="page-lede">
           Welcome to the Polygon Index — the day on one page. Where markets
           sit, what rates are saying, what's moving, and what the tape is
-          trading on.
+          trading on. Click any card to chart it.
         </p>
       </header>
 
@@ -126,15 +261,20 @@ export default function Markets() {
         <div className="dash-section">
           <div className="snapshot-grid">
             {snap.indices.map((ix) => (
-              <div className="snap-card" key={ix.sym}>
+              <button
+                className={`snap-card clickable${sel?.kind === 'index' && sel.label === ix.sym ? ' active' : ''}`}
+                key={ix.sym}
+                onClick={() => toggleIndex(ix)}
+              >
                 <span className="kicker">{ix.sym}</span>
                 <span className="snap-price">{fmtPrice(ix.price)}</span>
                 <span className={`snap-chg${ix.chg < 0 ? ' down' : ''}`}>{fmtChg(ix.chg)}</span>
-                <Sparkline data={ix.spark} />
+                <Sparkline data={ix.series ? ix.series.values.slice(-22) : null} />
                 <span className="snap-range">1 MONTH</span>
-              </div>
+              </button>
             ))}
           </div>
+          {sel?.kind === 'index' && <ChartDrawer key={sel.label} sel={sel} onClose={() => setSel(null)} />}
         </div>
       )}
 
@@ -143,7 +283,11 @@ export default function Markets() {
           <h2>Rates &amp; macro</h2>
           <div className="macro-strip">
             {dash.macro.map((m) => (
-              <div className="macro-stat" key={m.label}>
+              <button
+                className={`macro-stat${m.series ? ' clickable' : ''}${sel?.kind === 'macro' && sel.label === m.label ? ' active' : ''}`}
+                key={m.label}
+                onClick={() => toggleMacro(m)}
+              >
                 <span className="kicker">{m.label}</span>
                 <span className="macro-value">
                   {m.unit === 'bp' && m.value > 0 ? '+' : ''}
@@ -151,15 +295,25 @@ export default function Markets() {
                   <span className="macro-unit">{m.unit}</span>
                 </span>
                 <span className="macro-date">{m.date}</span>
-              </div>
+              </button>
             ))}
           </div>
+          {sel?.kind === 'macro' && <ChartDrawer key={sel.label} sel={sel} onClose={() => setSel(null)} />}
         </div>
       )}
 
       {dash?.movers && (
         <div className="dash-section">
           <h2>Today's movers</h2>
+          {sp500.length > 0 && (
+            <div className="ticker-row sp-row" style={{ '--dur': '60s' }}>
+              <div className="ticker-move">
+                {spTrack(0)}
+                {spTrack(1)}
+              </div>
+              <span className="ticker-label">S&amp;P 500</span>
+            </div>
+          )}
           <div className="tab-row" role="tablist">
             {MOVER_TABS.map((t) => (
               <button
