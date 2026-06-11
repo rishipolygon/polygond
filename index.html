@@ -13,11 +13,6 @@
       (function () {
         var t = localStorage.getItem('pd-theme') || 'light';
         document.documentElement.dataset.theme = t;
-        // Skin comparison: ?skin=swiss previews the Swiss direction,
-        // ?skin=classic switches back. Choice sticks until changed.
-        var q = new URLSearchParams(location.search).get('skin');
-        if (q) localStorage.setItem('pd-skin', q);
-        document.documentElement.dataset.skin = localStorage.getItem('pd-skin') || 'classic';
       })();
     </script>
   </head>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
+import Ticker from '../components/Ticker.jsx'
 
-// Striking landing: the hexagon mark, one line, two doors.
+// Striking landing: the hexagon mark, one line, two doors, a ticker.
 // The outer hexagon draws itself on load and tilts gently toward the cursor.
 export default function Home() {
   const heroRef = useRef(null)
@@ -33,11 +34,9 @@ export default function Home() {
     <section className="hero" ref={heroRef}>
       <span className="hero-corner hero-corner-tl">POLYGON DIGITAL</span>
       <span className="hero-corner hero-corner-tr">EST. 2026</span>
-      <span className="hero-corner hero-corner-bl">RESEARCH · WEEKLY</span>
-      <span className="hero-corner hero-corner-br">51.04°N 114.07°W</span>
 
       <div className="hero-mark" ref={markRef}>
-        <svg viewBox="0 0 100 100" width="180" height="180" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="88" height="88" aria-hidden="true">
           <polygon
             className="hero-hex-outer"
             points="50,4 89.8,27 89.8,73 50,96 10.2,73 10.2,27"
@@ -66,6 +65,8 @@ export default function Home() {
           About <span className="arrow">→</span>
         </Link>
       </div>
+
+      <Ticker />
     </section>
   )
 }
