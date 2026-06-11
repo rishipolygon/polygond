@@ -68,12 +68,11 @@ export default function Home() {
       </div>
 
       <h1 className="hero-title">
-        Complex things, broken down.
+        Market analysis with conviction.
       </h1>
 
       <p className="hero-sub">
-        A personal research log. Breakdowns, models, and notes from the
-        desk — posted as the work gets done.
+        We tell you what we think is happening — and why it matters.
       </p>
 
       <div className="hero-links">
