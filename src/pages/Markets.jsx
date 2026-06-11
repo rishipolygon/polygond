@@ -116,8 +116,7 @@ export default function Markets() {
         <span className="kicker">MARKETS · AS OF {updatedLabel}</span>
         <h1>Market dashboard</h1>
         <p className="page-lede">
-          The state of play, fastest-moving first: where markets are, what
-          rates say, what's moving, and what the tape is reading.
+          Welcome to the Polygon Index.
         </p>
       </header>
 
