@@ -29,6 +29,8 @@ jobs:
       - run: npm ci
       # refresh market.json; on failure the committed seed ships instead
       - run: npm run market || echo "market fetch failed, shipping seed data"
+        env:
+          ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGE_KEY }}
       - run: npm run build
       # SPA fallback so /blog/some-post deep links work on Pages
       - run: cp dist/index.html dist/404.html

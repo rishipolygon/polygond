@@ -44,6 +44,14 @@ Sources are free and keyless: Yahoo Finance (stocks + futures) and CoinGecko (cr
 
 To change the instruments, edit the `STOCKS` and `COMMODITIES` lists at the top of `scripts/fetch-market.mjs`.
 
+**Alpha Vantage fallback:** if Yahoo fails for an equity, the script retries via Alpha Vantage. The key lives in `.env.local` (gitignored — never commit it):
+
+```
+ALPHAVANTAGE_KEY=your-key-here
+```
+
+For deploys, add the same key as a repository secret named `ALPHAVANTAGE_KEY` (GitHub repo → Settings → Secrets and variables → Actions). Free AV keys allow ~25 requests/day, which is why it's a fallback rather than the primary source.
+
 ## Local development
 
 ```

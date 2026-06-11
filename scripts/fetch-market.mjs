@@ -4,11 +4,27 @@
 // Run with: npm run market
 // The committed market.json acts as a fallback seed if any source is down.
 
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
-const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'market.json')
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
+const OUT = join(ROOT, 'public', 'market.json')
+
+// Alpha Vantage is the fallback for equities when Yahoo fails.
+// Key comes from the ALPHAVANTAGE_KEY env var (GitHub Actions secret in CI)
+// or from the gitignored .env.local file when running locally.
+// NOTE: free AV keys allow ~25 requests/day, so it stays a fallback only.
+function loadEnvLocal() {
+  const file = join(ROOT, '.env.local')
+  if (!existsSync(file)) return
+  for (const line of readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const m = /^([A-Z0-9_]+)\s*=\s*(.+)$/.exec(line.trim())
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2]
+  }
+}
+loadEnvLocal()
+const AV_KEY = process.env.ALPHAVANTAGE_KEY ?? ''
 
 // Top 10 US-listed companies by market cap — edit freely.
 const STOCKS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'AVGO', 'TSLA', 'BRK-B', 'LLY']
@@ -42,6 +58,31 @@ async function yahoo(symbol, label) {
   return { sym: label ?? symbol, price, chg: ((price - prev) / prev) * 100 }
 }
 
+async function alphaVantage(symbol) {
+  // AV uses dots where Yahoo uses dashes (BRK-B -> BRK.B)
+  const avSymbol = symbol.replace('-', '.')
+  const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(avSymbol)}&apikey=${AV_KEY}`
+  const res = await fetch(url)
+  if (!res.ok) throw new Error(`${symbol}: AV HTTP ${res.status}`)
+  const quote = (await res.json())['Global Quote']
+  const price = parseFloat(quote?.['05. price'])
+  const chg = parseFloat((quote?.['10. change percent'] ?? '').replace('%', ''))
+  if (!Number.isFinite(price) || !Number.isFinite(chg)) {
+    throw new Error(`${symbol}: no AV quote (rate limit?)`)
+  }
+  return { sym: symbol, price, chg }
+}
+
+async function stockQuote(symbol) {
+  try {
+    return await yahoo(symbol)
+  } catch (err) {
+    if (!AV_KEY) throw err
+    console.warn(`  ${symbol}: Yahoo failed (${err.message}), trying Alpha Vantage`)
+    return alphaVantage(symbol)
+  }
+}
+
 async function fetchCrypto() {
   const url =
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=16&page=1'
@@ -70,7 +111,7 @@ async function settle(promises) {
 }
 
 console.log('Fetching equities...')
-const stocks = await settle(STOCKS.map((s) => yahoo(s)))
+const stocks = await settle(STOCKS.map((s) => stockQuote(s)))
 console.log('Fetching commodities...')
 const commodities = await settle(COMMODITIES.map(([s, label]) => yahoo(s, label)))
 console.log('Fetching crypto...')
