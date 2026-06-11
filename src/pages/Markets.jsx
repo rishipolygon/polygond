@@ -116,7 +116,9 @@ export default function Markets() {
         <span className="kicker">MARKETS · AS OF {updatedLabel}</span>
         <h1>Market dashboard</h1>
         <p className="page-lede">
-          Welcome to the Polygon Index.
+          Welcome to the Polygon Index — the day on one page. Where markets
+          sit, what rates are saying, what's moving, and what the tape is
+          trading on.
         </p>
       </header>
 
@@ -188,7 +190,7 @@ export default function Markets() {
 
       {dash?.news?.length > 0 && (
         <div className="dash-section">
-          <h2>What the tape is reading</h2>
+          <h2>What's trending on the tape</h2>
           <div className="tab-row tab-row-small">
             {NEWS_FILTERS.map((f) => (
               <button
@@ -203,21 +205,23 @@ export default function Markets() {
           {news.length === 0 ? (
             <p className="news-empty">Nothing {newsFilter} on the tape right now.</p>
           ) : (
-            <ul className="news-list">
-              {news.map((n) => (
-                <li key={n.url}>
-                  <a href={n.url} target="_blank" rel="noopener noreferrer">
-                    <span className={`news-tag${sentimentGroup(n.label) === 'bearish' ? ' down' : ''}`}>
-                      {(n.label || 'NEUTRAL').toUpperCase().replace('SOMEWHAT-', '~')}
-                    </span>
-                    <span className="news-title">{n.title}</span>
-                    <span className="news-meta">
-                      {n.source} · {fmtNewsTime(n.time)}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="news-scroll">
+              <ul className="news-list">
+                {news.map((n) => (
+                  <li key={n.url}>
+                    <a href={n.url} target="_blank" rel="noopener noreferrer">
+                      <span className={`news-tag${sentimentGroup(n.label) === 'bearish' ? ' down' : ''}`}>
+                        {(n.label || 'NEUTRAL').toUpperCase().replace('SOMEWHAT-', '~')}
+                      </span>
+                      <span className="news-title">{n.title}</span>
+                      <span className="news-meta">
+                        {n.source} · {fmtNewsTime(n.time)}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       )}

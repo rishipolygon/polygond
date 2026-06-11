@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11T21:51:40.304Z",
+  "updated": "2026-06-11T22:07:43.703Z",
   "movers": {
     "asOf": "2026-06-10 16:16:00 US/Eastern",
     "gainers": [
@@ -139,12 +139,140 @@
   ],
   "news": [
     {
+      "title": "Steven Madden CPO Christina Ciglar sells $230k in stock",
+      "url": "https://www.investing.com/news/insider-trading-news/steven-madden-cpo-christina-ciglar-sells-230k-in-stock-93CH-4736204",
+      "source": "Investing.com",
+      "time": "20260611T213926",
+      "label": "Neutral",
+      "score": -0.104648
+    },
+    {
+      "title": "ATEN (NYSE) Form 144: Brokered resale notice for 5,091 and two 955/954 lots",
+      "url": "https://www.stocktitan.net/sec-filings/ATEN/144-a10-networks-inc-sec-filing-945a3d39f3ae.html",
+      "source": "Stock Titan",
+      "time": "20260611T213847",
+      "label": "Neutral",
+      "score": 0.042185
+    },
+    {
+      "title": "Jurgi Camblong Sells 8,500 Shares of SOPHiA GENETICS (NASDAQ:SOPH) Stock",
+      "url": "https://www.marketbeat.com/instant-alerts/jurgi-camblong-sells-8500-shares-of-sophia-genetics-nasdaqsoph-stock-2026-06-11/",
+      "source": "MarketBeat",
+      "time": "20260611T213651",
+      "label": "Somewhat-Bearish",
+      "score": -0.168843
+    },
+    {
+      "title": "A Look At Hormel Foods (HRL) Valuation After Q2 Earnings Miss And Lower 2026 Guidance",
+      "url": "https://simplywall.st/stocks/us/food-beverage-tobacco/nyse-hrl/hormel-foods/news/a-look-at-hormel-foods-hrl-valuation-after-q2-earnings-miss",
+      "source": "Simply Wall Street",
+      "time": "20260611T213154",
+      "label": "Neutral",
+      "score": 0.133502
+    },
+    {
+      "title": "Moderna Gains Almost 8% With Nasdaq Recovery; Cancer Vaccine Pipeline Still a Key Focus",
+      "url": "https://ts2.tech/en/moderna-gains-almost-8-with-nasdaq-recovery-cancer-vaccine-pipeline-still-a-key-focus/",
+      "source": "TechStock²",
+      "time": "20260611T213111",
+      "label": "Bullish",
+      "score": 0.442227
+    },
+    {
+      "title": "Silver Lake funds sell small Dell (NYSE: DELL) stake at $403–$406",
+      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-ef779071bc49.html",
+      "source": "Stock Titan",
+      "time": "20260611T212732",
+      "label": "Neutral",
+      "score": 0.002748
+    },
+    {
+      "title": "KDP: Bernstein Initiates Coverage with Outperform Rating and $38 Price Target",
+      "url": "https://www.gurufocus.com/news/8912754/kdp-bernstein-initiates-coverage-with-outperform-rating-and-38-price-target",
+      "source": "GuruFocus",
+      "time": "20260611T212658",
+      "label": "Bullish",
+      "score": 0.430876
+    },
+    {
+      "title": "[Form 4] Dell Technologies Inc. Insider Trading Activity",
+      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-710915599f2d.html",
+      "source": "Stock Titan",
+      "time": "20260611T212632",
+      "label": "Neutral",
+      "score": -0.06272
+    },
+    {
+      "title": "Bernstein initiates Pepsico stock coverage with market perform rating",
+      "url": "https://www.investing.com/news/analyst-ratings/bernstein-initiates-pepsico-stock-coverage-with-market-perform-rating-93CH-4738508",
+      "source": "Investing.com",
+      "time": "20260611T212423",
+      "label": "Neutral",
+      "score": 0.088769
+    },
+    {
+      "title": "Bernstein initiates Colgate-Palmolive stock with $96 price target",
+      "url": "https://www.investing.com/news/analyst-ratings/bernstein-initiates-colgatepalmolive-stock-with-96-price-target-93CH-4738505",
+      "source": "Investing.com",
+      "time": "20260611T212417",
+      "label": "Somewhat-Bullish",
+      "score": 0.334272
+    },
+    {
+      "title": "Intercontinental Exchange (NYSE: ICE) director sells 91 shares under 10b5-1 plan",
+      "url": "https://www.stocktitan.net/sec-filings/ICE/form-4-intercontinental-exchange-inc-insider-trading-activity-10cb06f962f4.html",
+      "source": "Stock Titan",
+      "time": "20260611T212052",
+      "label": "Somewhat-Bearish",
+      "score": -0.224023
+    },
+    {
+      "title": "A.O. Smith Corp. stock underperforms Thursday when compared to competitors despite daily gains",
+      "url": "https://www.marketwatch.com/data-news/a-o-smith-corp-stock-underperforms-thursday-when-compared-to-competitors-despite-daily-gains-14895d39-5b0d9ba346c9?mod=goog_fin_scmw",
+      "source": "MarketWatch",
+      "time": "20260611T211903",
+      "label": "Neutral",
+      "score": 0.008493
+    },
+    {
+      "title": "Insider Selling: Analog Devices (NASDAQ:ADI) Director Sells 1,432 Shares of Stock",
+      "url": "https://www.marketbeat.com/instant-alerts/insider-selling-analog-devices-nasdaqadi-director-sells-1432-shares-of-stock-2026-06-11/",
+      "source": "MarketBeat",
+      "time": "20260611T211858",
+      "label": "Neutral",
+      "score": 0.123499
+    },
+    {
+      "title": "Insider Selling: General Motors (NYSE:GM) CEO Sells 20,582 Shares of Stock",
+      "url": "https://www.marketbeat.com/instant-alerts/insider-selling-general-motors-nysegm-ceo-sells-20582-shares-of-stock-2026-06-11/",
+      "source": "MarketBeat",
+      "time": "20260611T211846",
+      "label": "Neutral",
+      "score": 0.11963
+    },
+    {
+      "title": "CarMax (KMX) Valuation Check As Earnings Estimates Weaken And Investor Focus Increases",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/carmax-kmx-valuation-check-earnings-211252647.html",
+      "source": "Yahoo Finance",
+      "time": "20260611T211303",
+      "label": "Neutral",
+      "score": 0.006666
+    },
+    {
+      "title": "Silver Lake entities trim Dell (DELL) stake with 5,025-share open-market sale",
+      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-d5d745cdec5c.html",
+      "source": "Stock Titan",
+      "time": "20260611T211132",
+      "label": "Somewhat-Bearish",
+      "score": -0.302436
+    },
+    {
       "title": "Coeur Mining Drops Even as S&P MidCap 400 Move Meets Gold Slide",
       "url": "https://ts2.tech/en/coeur-mining-drops-even-as-sp-midcap-400-move-meets-gold-slide/",
       "source": "TechStock²",
       "time": "20260611T211012",
       "label": "Bearish",
-      "score": -0.428539
+      "score": -0.428758
     },
     {
       "title": "YieldMax PLTR Option Income Strategy ETF offers high income but high risk with potential capital loss.",
@@ -152,39 +280,7 @@
       "source": "Pluang",
       "time": "20260611T211008",
       "label": "Neutral",
-      "score": -0.07518
-    },
-    {
-      "title": "ConocoPhillips director Sharmila Mulligan sells $234,906 of common stock",
-      "url": "https://www.investing.com/news/insider-trading-news/conocophillips-director-sharmila-mulligan-sells-234906-of-common-stock-93CH-4736020",
-      "source": "Investing.com",
-      "time": "20260611T210719",
-      "label": "Somewhat-Bearish",
-      "score": -0.203417
-    },
-    {
-      "title": "Is Avery Dennison Corporation (AVY) A Good Stock To Buy Now?",
-      "url": "https://ca.finance.yahoo.com/news/avery-dennison-corporation-avy-good-210010388.html",
-      "source": "Yahoo! Finance Canada",
-      "time": "20260611T210007",
-      "label": "Bullish",
-      "score": 0.606088
-    },
-    {
-      "title": "Silver Lake entities trim Dell (DELL) stake with share sales and Class B-to-C conversions",
-      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-5f4676ed4991.html",
-      "source": "Stock Titan",
-      "time": "20260611T205627",
-      "label": "Neutral",
-      "score": 0.114879
-    },
-    {
-      "title": "Dell Technologies (NYSE: DELL) holder Silver Lake sells 2,183 Class C shares",
-      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-49411bd8c441.html",
-      "source": "Stock Titan",
-      "time": "20260611T205627",
-      "label": "Somewhat-Bearish",
-      "score": -0.246969
+      "score": -0.082771
     }
   ]
 }

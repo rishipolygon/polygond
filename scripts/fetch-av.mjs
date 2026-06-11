@@ -124,8 +124,8 @@ if (macroRaw['10Y TREASURY'] && macroRaw['2Y TREASURY']) {
 // — news sentiment —
 try {
   console.log('Fetching news sentiment...')
-  const j = await av({ function: 'NEWS_SENTIMENT', topics: 'financial_markets', sort: 'LATEST', limit: '20' })
-  out.news = (j.feed || []).slice(0, 6).map((a) => ({
+  const j = await av({ function: 'NEWS_SENTIMENT', topics: 'financial_markets', sort: 'LATEST', limit: '50' })
+  out.news = (j.feed || []).slice(0, 18).map((a) => ({
     title: a.title,
     url: a.url,
     source: a.source,

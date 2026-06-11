@@ -574,9 +574,31 @@ h1, h2, h3 {
   margin-bottom: 1.75rem;
 }
 
+.news-scroll {
+  max-height: 24rem;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-right: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.news-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.news-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.news-scroll::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
+
 .news-list {
   list-style: none;
-  border-top: 1px solid var(--line);
 }
 
 .news-list li {
