@@ -8,8 +8,8 @@ export default function Blog() {
         <span className="kicker">INDEX · {String(posts.length).padStart(2, '0')} NOTES</span>
         <h1>Research notes</h1>
         <p className="page-lede">
-          Weekly writing on energy markets, quantitative methods, and the
-          systems that price risk.
+          Breakdowns, deep dives, and research notes on whatever I'm
+          digging into.
         </p>
       </header>
 

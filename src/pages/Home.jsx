@@ -68,7 +68,7 @@ export default function Home() {
       </div>
 
       <h1 className="hero-title">
-        Markets, energy, and machine intelligence — broken down.
+        Complex things, broken down.
       </h1>
 
       <p className="hero-sub">

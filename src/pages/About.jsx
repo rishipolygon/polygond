@@ -11,9 +11,8 @@ export default function About() {
       <div className="article about-body">
         <p>
           Polygon Digital is a personal research log. I post breakdowns of
-          whatever I'm digging into — energy markets, quantitative methods,
-          and the growing role of machine intelligence in how risk gets
-          priced.
+          whatever I'm digging into — markets, technology, and the systems
+          that make them tick.
         </p>
         <p>
           The work sits at the intersection of physical commodity markets and
