@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/build-rss.mjs && vite build",
     "preview": "vite preview",
-    "market": "node scripts/fetch-market.mjs"
+    "market": "node scripts/fetch-market.mjs",
+    "rss": "node scripts/build-rss.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.5",

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import Ticker from '../components/Ticker.jsx'
+import Subscribe from '../components/Subscribe.jsx'
 
 // Striking landing: the hexagon mark, one line, two doors, a ticker.
 // The outer hexagon draws itself on load and tilts gently toward the cursor.
@@ -31,6 +32,7 @@ export default function Home() {
   }, [])
 
   return (
+    <>
     <section className="hero" ref={heroRef}>
       <div className="hero-bg" aria-hidden="true" />
       <svg className="hero-watermark" viewBox="0 0 100 100" aria-hidden="true">
@@ -77,7 +79,7 @@ export default function Home() {
 
       <div className="hero-links">
         <Link to="/blog" className="hero-link">
-          Read the research <span className="arrow">→</span>
+          Read the blog <span className="arrow">→</span>
         </Link>
         <Link to="/about" className="hero-link hero-link-quiet">
           About <span className="arrow">→</span>
@@ -86,5 +88,8 @@ export default function Home() {
 
       <Ticker />
     </section>
+
+    <Subscribe />
+    </>
   )
 }

@@ -388,6 +388,108 @@ h1, h2, h3 {
   .ticker-label { display: none; }
 }
 
+/* ——— Subscribe section ——— */
+
+.subscribe {
+  border-top: 1px solid var(--line);
+  padding: 7rem clamp(1.25rem, 5vw, 3rem) 8rem;
+}
+
+.subscribe-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .subscribe-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.subscribe-copy h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0.9rem 0 1rem;
+}
+
+.subscribe-copy p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 38ch;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 0.5rem;
+}
+
+.subscribe-form input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--fg);
+  padding: 0.5rem 0;
+}
+
+.subscribe-form input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.subscribe-form button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--fg);
+  padding: 0.5rem 0;
+  transition: opacity 0.2s ease;
+}
+
+.subscribe-form button:hover {
+  opacity: 0.6;
+}
+
+.subscribe-form button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.subscribe-msg {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.subscribe-rss {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.subscribe-rss:hover {
+  color: var(--fg);
+}
+
 /* ——— Generic page shell ——— */
 
 .page {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Polygon Digital</title>
+    <link>https://polygond.com</link>
+    <description>Market analysis with conviction. We tell you what we think is happening and why it matters.</description>
+    <language>en</language>
+    <item>
+      <title>Welcome to Polygon Digital</title>
+      <link>https://polygond.com/blog/welcome-to-polygon-digital</link>
+      <guid isPermaLink="true">https://polygond.com/blog/welcome-to-polygon-digital</guid>
+      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
+      <description>What this platform is, what gets published here, and why it exists.</description>
+    </item>
+    <item>
+      <title>Reading the curve: a primer on term structure</title>
+      <link>https://polygond.com/blog/reading-the-curve-a-primer</link>
+      <guid isPermaLink="true">https://polygond.com/blog/reading-the-curve-a-primer</guid>
+      <pubDate>Thu, 04 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Contango, backwardation, and what the shape of a futures curve is actually telling you.</description>
+    </item>
+  </channel>
+</rss>
