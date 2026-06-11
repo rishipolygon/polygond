@@ -10,10 +10,10 @@ export default function About() {
 
       <div className="article about-body">
         <p>
-          Polygon Digital is an independent finance research platform. Each
-          week it publishes one note — on energy markets, quantitative
-          methods, or the growing role of machine intelligence in how risk
-          gets priced.
+          Polygon Digital is a personal research log. I post breakdowns of
+          whatever I'm digging into — energy markets, quantitative methods,
+          and the growing role of machine intelligence in how risk gets
+          priced.
         </p>
         <p>
           The work sits at the intersection of physical commodity markets and

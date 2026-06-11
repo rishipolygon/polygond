@@ -32,8 +32,22 @@ export default function Home() {
 
   return (
     <section className="hero" ref={heroRef}>
-      <span className="hero-corner hero-corner-tl">POLYGON DIGITAL</span>
-      <span className="hero-corner hero-corner-tr">EST. 2026</span>
+      <div className="hero-bg" aria-hidden="true" />
+      <svg className="hero-watermark" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon
+          points="50,4 89.8,27 89.8,73 50,96 10.2,73 10.2,27"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.7"
+        />
+        <polygon
+          points="50,26 70.8,38 70.8,62 50,74 29.2,62 29.2,38"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.7"
+        />
+      </svg>
+      <span className="hero-corner hero-corner-tr">EST. 2025</span>
 
       <div className="hero-mark" ref={markRef}>
         <svg viewBox="0 0 100 100" width="88" height="88" aria-hidden="true">
@@ -54,8 +68,13 @@ export default function Home() {
       </div>
 
       <h1 className="hero-title">
-        Independent research on markets, energy, and machine intelligence.
+        Markets, energy, and machine intelligence — broken down.
       </h1>
+
+      <p className="hero-sub">
+        A personal research log. Breakdowns, models, and notes from the
+        desk — posted as the work gets done.
+      </p>
 
       <div className="hero-links">
         <Link to="/blog" className="hero-link">

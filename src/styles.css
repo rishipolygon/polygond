@@ -171,6 +171,37 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
+/* faint blueprint grid, faded out toward the lower-left where the copy sits */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 75% 30%, black 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 90% 80% at 75% 30%, black 25%, transparent 78%);
+}
+
+/* oversized hexagon watermark, barely-there */
+.hero-watermark {
+  position: absolute;
+  top: 8%;
+  right: -4%;
+  width: min(46vw, 540px);
+  height: auto;
+  z-index: -1;
+  color: var(--fg);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .hero-watermark { width: 70vw; right: -20%; opacity: 0.04; }
+}
+
 .hero-corner {
   position: absolute;
   font-family: 'IBM Plex Mono', monospace;
@@ -215,6 +246,15 @@ h1, h2, h3 {
   max-width: 26ch;
   opacity: 0;
   animation: rise 0.9s ease-out 0.5s forwards;
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 44ch;
+  margin-top: -1.1rem;
+  opacity: 0;
+  animation: rise 0.9s ease-out 0.65s forwards;
 }
 
 .hero-links {
@@ -645,6 +685,6 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   .hero-hex-outer { animation: none; stroke-dashoffset: 0; }
   .hero-hex-inner { animation: none; opacity: 1; }
-  .hero-title, .hero-links { animation: none; opacity: 1; }
+  .hero-title, .hero-sub, .hero-links { animation: none; opacity: 1; }
   .ticker-move { animation: none; }
 }

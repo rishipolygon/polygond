@@ -8,7 +8,7 @@ export default function Footer() {
           <Mark size={16} />
           <span>© {new Date().getFullYear()} Polygon Digital</span>
         </div>
-        <span className="footer-mono">POLYGOND.COM · INDEPENDENT RESEARCH</span>
+        <span className="footer-mono">POLYGOND.COM · EST. 2025</span>
       </div>
     </footer>
   )
