@@ -1,41 +1,67 @@
-import { Link } from 'react-router-dom'
-import { posts, formatDate } from '../lib/posts.js'
+import { useEffect, useState } from 'react'
 
-const STANDING_ITEMS = [
-  'POLYGON DIGITAL',
-  'INDEPENDENT RESEARCH',
-  'ONE NOTE · EVERY WEEK',
-  'CALGARY · 51.04°N 114.07°W',
+// Three stacked market tickers (equities / crypto / commodities) along the
+// bottom of the hero. Data comes from public/market.json, refreshed by
+// scripts/fetch-market.mjs (locally via `npm run market`, in production by
+// the scheduled GitHub Actions build). Monochrome: losses show in muted ink.
+const ROWS = [
+  { key: 'stocks', label: 'EQUITIES' },
+  { key: 'crypto', label: 'CRYPTO' },
+  { key: 'commodities', label: 'COMMODITIES' },
 ]
 
-// Infinite marquee along the bottom of the hero. Latest notes are
-// clickable; the track is duplicated so the loop is seamless.
-export default function Ticker() {
-  const items = [
-    ...posts.slice(0, 5).map((p) => ({
-      text: `${formatDate(p.date)} — ${p.title}`,
-      to: `/blog/${p.slug}`,
-    })),
-    ...STANDING_ITEMS.map((text) => ({ text })),
-  ]
+function fmtPrice(p) {
+  if (p >= 1000) return p.toLocaleString('en-US', { maximumFractionDigits: 0 })
+  if (p >= 1) return p.toFixed(2)
+  return p.toFixed(4)
+}
 
-  const track = (copy) => (
-    <div className="ticker-track" aria-hidden={copy > 0}>
-      {items.map((it, i) => (
-        <span className="ticker-item" key={`${copy}-${i}`}>
-          {it.to ? <Link to={it.to} tabIndex={copy > 0 ? -1 : 0}>{it.text}</Link> : it.text}
-          <span className="ticker-sep">·</span>
-        </span>
-      ))}
-    </div>
-  )
+function fmtChg(c) {
+  return `${c < 0 ? '−' : '+'}${Math.abs(c).toFixed(2)}%`
+}
+
+export default function Ticker() {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}market.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then(setData)
+      .catch(() => {})
+  }, [])
+
+  if (!data) return null
 
   return (
-    <div className="ticker">
-      <div className="ticker-move">
-        {track(0)}
-        {track(1)}
-      </div>
+    <div className="tickers">
+      {ROWS.map((row, ri) => {
+        const items = data[row.key] || []
+        if (items.length === 0) return null
+
+        const track = (copy) => (
+          <div className="ticker-track" aria-hidden={copy > 0}>
+            {items.map((it, i) => (
+              <span className="ticker-item" key={`${copy}-${i}`}>
+                <span className="ticker-sym">{it.sym}</span>
+                <span className="ticker-price">{fmtPrice(it.price)}</span>
+                <span className={`ticker-chg${it.chg < 0 ? ' down' : ''}`}>
+                  {fmtChg(it.chg)}
+                </span>
+              </span>
+            ))}
+          </div>
+        )
+
+        return (
+          <div className="ticker-row" key={row.key} style={{ '--dur': `${48 + ri * 14}s` }}>
+            <div className="ticker-move">
+              {track(0)}
+              {track(1)}
+            </div>
+            <span className="ticker-label">{row.label}</span>
+          </div>
+        )
+      })}
     </div>
   )
 }

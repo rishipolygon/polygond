@@ -32,6 +32,18 @@ Minimal black-and-white research site. React + Vite, posts in plain Markdown, de
 
 Posts are sorted by `date` (newest first). Drafts: just don't push the file until it's ready.
 
+## Market ticker
+
+The home page shows three scrolling tickers (equities / crypto / commodities) fed by `public/market.json`. Refresh it any time with:
+
+```
+npm run market
+```
+
+Sources are free and keyless: Yahoo Finance (stocks + futures) and CoinGecko (crypto). In production, the deploy workflow re-fetches on every push **and every 6 hours** via cron, so the live site stays current with zero paid APIs. If a fetch fails, the last committed `market.json` ships instead.
+
+To change the instruments, edit the `STOCKS` and `COMMODITIES` lists at the top of `scripts/fetch-market.mjs`.
+
 ## Local development
 
 ```

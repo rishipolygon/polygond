@@ -166,7 +166,7 @@ h1, h2, h3 {
   justify-content: flex-end;
   gap: 2.25rem;
   text-align: left;
-  padding: 6rem clamp(1.25rem, 5vw, 3rem) 9rem;
+  padding: 6rem clamp(1.25rem, 5vw, 3rem) 12rem;
   perspective: 900px;
   overflow: hidden;
 }
@@ -263,25 +263,29 @@ h1, h2, h3 {
   color: var(--fg);
 }
 
-/* ——— Ticker ——— */
+/* ——— Market tickers ——— */
 
-.ticker {
+.tickers {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.ticker-row {
+  position: relative;
   border-top: 1px solid var(--line);
   overflow: hidden;
-  padding: 0.85rem 0;
+  padding: 0.6rem 0;
 }
 
 .ticker-move {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 55s linear infinite;
+  animation: ticker-scroll var(--dur, 55s) linear infinite;
 }
 
-.ticker:hover .ticker-move {
+.ticker-row:hover .ticker-move {
   animation-play-state: paused;
 }
 
@@ -291,31 +295,57 @@ h1, h2, h3 {
 
 .ticker-item {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-right: 2.4rem;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
+  letter-spacing: 0.08em;
   white-space: nowrap;
 }
 
-.ticker-item a {
-  transition: color 0.2s ease;
-}
-
-.ticker-item a:hover {
+.ticker-sym {
   color: var(--fg);
 }
 
-.ticker-sep {
-  margin: 0 1.5rem;
-  opacity: 0.45;
+.ticker-price {
+  color: var(--muted);
+}
+
+.ticker-chg {
+  color: var(--fg);
+}
+
+.ticker-chg.down {
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+/* category label pinned to the left edge, floating above the scroll */
+.ticker-label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 0.2rem clamp(1.25rem, 4vw, 3rem) 0.2rem clamp(1.25rem, 4vw, 3rem);
+  padding-right: 1.5rem;
+  background: linear-gradient(to right, var(--bg) 78%, transparent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  color: var(--muted);
+  pointer-events: none;
+  user-select: none;
 }
 
 @keyframes ticker-scroll {
   to { transform: translateX(-50%); }
+}
+
+@media (max-width: 560px) {
+  .ticker-label { display: none; }
 }
 
 /* ——— Generic page shell ——— */

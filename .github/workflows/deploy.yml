@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # refresh ticker data every 6 hours (committed market.json is the fallback)
+    - cron: '23 0,6,12,18 * * *'
 
 permissions:
   contents: read
@@ -24,6 +27,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # refresh market.json; on failure the committed seed ships instead
+      - run: npm run market || echo "market fetch failed, shipping seed data"
       - run: npm run build
       # SPA fallback so /blog/some-post deep links work on Pages
       - run: cp dist/index.html dist/404.html
