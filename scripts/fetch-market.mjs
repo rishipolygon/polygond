@@ -40,6 +40,15 @@ const COMMODITIES = [
   ['ZW=F', 'WHEAT'],
 ]
 
+// headline indices for the /markets snapshot (Yahoo, costs no AV budget)
+const INDICES = [
+  ['^GSPC', 'S&P 500'],
+  ['^IXIC', 'NASDAQ'],
+  ['^DJI', 'DOW'],
+  ['^VIX', 'VIX'],
+  ['DX-Y.NYB', 'DXY'],
+]
+
 const STABLECOINS = new Set(['usdt', 'usdc', 'dai', 'usds', 'usde', 'busd', 'tusd', 'fdusd', 'pyusd'])
 // wrapped/staked duplicates and tokenized products that pollute the top-10
 const EXCLUDED = new Set(['wbtc', 'weth', 'steth', 'wsteth', 'cbbtc', 'reth', 'figr_heloc'])
@@ -56,6 +65,24 @@ async function yahoo(symbol, label) {
     throw new Error(`${symbol}: missing price data`)
   }
   return { sym: label ?? symbol, price, chg: ((price - prev) / prev) * 100 }
+}
+
+// like yahoo() but keeps a month of daily closes for sparklines
+async function yahooSeries(symbol, label) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1mo&interval=1d`
+  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (polygond.com market ticker)' } })
+  if (!res.ok) throw new Error(`${symbol}: HTTP ${res.status}`)
+  const result = (await res.json())?.chart?.result?.[0]
+  const price = result?.meta?.regularMarketPrice
+  const closes = (result?.indicators?.quote?.[0]?.close || []).filter((c) => typeof c === 'number')
+  if (typeof price !== 'number' || closes.length < 2) throw new Error(`${symbol}: missing series`)
+  const prev = closes[closes.length - 2]
+  return {
+    sym: label,
+    price,
+    chg: ((price - prev) / prev) * 100,
+    spark: closes.slice(-22).map((c) => Math.round(c * 100) / 100),
+  }
 }
 
 async function alphaVantage(symbol) {
@@ -110,6 +137,8 @@ async function settle(promises) {
   return results.filter((r) => r.status === 'fulfilled').map((r) => r.value)
 }
 
+console.log('Fetching indices...')
+const indices = await settle(INDICES.map(([s, label]) => yahooSeries(s, label)))
 console.log('Fetching equities...')
 const stocks = await settle(STOCKS.map((s) => stockQuote(s)))
 console.log('Fetching commodities...')
@@ -127,8 +156,8 @@ if (stocks.length === 0 && crypto.length === 0 && commodities.length === 0) {
   process.exit(1)
 }
 
-const out = { updated: new Date().toISOString(), stocks, crypto, commodities }
+const out = { updated: new Date().toISOString(), indices, stocks, crypto, commodities }
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n')
 console.log(
-  `Wrote market.json — ${stocks.length} stocks, ${crypto.length} crypto, ${commodities.length} commodities`,
+  `Wrote market.json — ${indices.length} indices, ${stocks.length} stocks, ${crypto.length} crypto, ${commodities.length} commodities`,
 )
