@@ -5,8 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # refresh ticker data every 6 hours (committed market.json is the fallback)
-    - cron: '23 0,6,12,18 * * *'
+    # refresh market data 3x/day — keeps Alpha Vantage usage (~7 req/run)
+    # under its 25 req/day free cap; committed JSON files are the fallback
+    - cron: '23 5,13,21 * * *'
 
 permissions:
   contents: read
@@ -27,8 +28,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # refresh market.json; on failure the committed seed ships instead
+      # refresh ticker + dashboard data; on failure the committed seeds ship instead
       - run: npm run market || echo "market fetch failed, shipping seed data"
+        env:
+          ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGE_KEY }}
+      - run: npm run avdata || echo "AV dashboard fetch failed, shipping seed data"
         env:
           ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGE_KEY }}
       - run: npm run build

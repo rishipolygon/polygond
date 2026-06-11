@@ -1,0 +1,190 @@
+{
+  "updated": "2026-06-11T21:51:40.304Z",
+  "movers": {
+    "asOf": "2026-06-10 16:16:00 US/Eastern",
+    "gainers": [
+      {
+        "sym": "CPOP",
+        "price": 1.52,
+        "chg": 322.2222,
+        "volume": 266250146
+      },
+      {
+        "sym": "DSY",
+        "price": 7.2,
+        "chg": 291.3043,
+        "volume": 112488342
+      },
+      {
+        "sym": "VLN+",
+        "price": 0.06,
+        "chg": 197.0297,
+        "volume": 27502
+      },
+      {
+        "sym": "DSYWW",
+        "price": 0.036,
+        "chg": 164.7059,
+        "volume": 847529
+      },
+      {
+        "sym": "VSME",
+        "price": 2.05,
+        "chg": 148.9677,
+        "volume": 225288175
+      }
+    ],
+    "losers": [
+      {
+        "sym": "MLACU",
+        "price": 3.6,
+        "chg": -67.4208,
+        "volume": 13414
+      },
+      {
+        "sym": "BNCWZ",
+        "price": 0.0301,
+        "chg": -58.7671,
+        "volume": 418570
+      },
+      {
+        "sym": "MLAC",
+        "price": 3.12,
+        "chg": -57.6662,
+        "volume": 695669
+      },
+      {
+        "sym": "SMCX",
+        "price": 9.66,
+        "chg": -55.7084,
+        "volume": 12294290
+      },
+      {
+        "sym": "SMCL",
+        "price": 39.4,
+        "chg": -55.5976,
+        "volume": 686448
+      }
+    ],
+    "active": [
+      {
+        "sym": "SOXS",
+        "price": 6.575,
+        "chg": 10.8769,
+        "volume": 1167967376
+      },
+      {
+        "sym": "TZA",
+        "price": 4.68,
+        "chg": 3.0837,
+        "volume": 403694499
+      },
+      {
+        "sym": "BITO",
+        "price": 8.42,
+        "chg": -0.237,
+        "volume": 349447527
+      },
+      {
+        "sym": "YYGH",
+        "price": 0.165,
+        "chg": 31.684,
+        "volume": 293563409
+      },
+      {
+        "sym": "CPOP",
+        "price": 1.52,
+        "chg": 322.2222,
+        "volume": 266250146
+      }
+    ]
+  },
+  "macro": [
+    {
+      "label": "10Y TREASURY",
+      "value": 4.53,
+      "unit": "%",
+      "date": "2026-06-09"
+    },
+    {
+      "label": "2Y TREASURY",
+      "value": 4.13,
+      "unit": "%",
+      "date": "2026-06-09"
+    },
+    {
+      "label": "2S10S SPREAD",
+      "value": 40,
+      "unit": "bp",
+      "date": "2026-06-09"
+    },
+    {
+      "label": "FED FUNDS",
+      "value": 3.62,
+      "unit": "%",
+      "date": "2026-06-09"
+    },
+    {
+      "label": "UNEMPLOYMENT",
+      "value": 4.3,
+      "unit": "%",
+      "date": "2026-05-01"
+    },
+    {
+      "label": "CPI YOY",
+      "value": 4.47,
+      "unit": "%",
+      "date": "2026-05-01"
+    }
+  ],
+  "news": [
+    {
+      "title": "Coeur Mining Drops Even as S&P MidCap 400 Move Meets Gold Slide",
+      "url": "https://ts2.tech/en/coeur-mining-drops-even-as-sp-midcap-400-move-meets-gold-slide/",
+      "source": "TechStock²",
+      "time": "20260611T211012",
+      "label": "Bearish",
+      "score": -0.428539
+    },
+    {
+      "title": "YieldMax PLTR Option Income Strategy ETF offers high income but high risk with potential capital loss.",
+      "url": "https://pluang.com/en/news-feed/plty-bukan-waktu-tepat-untuk-investasi-berisiko-tinggi-pada-palantir",
+      "source": "Pluang",
+      "time": "20260611T211008",
+      "label": "Neutral",
+      "score": -0.07518
+    },
+    {
+      "title": "ConocoPhillips director Sharmila Mulligan sells $234,906 of common stock",
+      "url": "https://www.investing.com/news/insider-trading-news/conocophillips-director-sharmila-mulligan-sells-234906-of-common-stock-93CH-4736020",
+      "source": "Investing.com",
+      "time": "20260611T210719",
+      "label": "Somewhat-Bearish",
+      "score": -0.203417
+    },
+    {
+      "title": "Is Avery Dennison Corporation (AVY) A Good Stock To Buy Now?",
+      "url": "https://ca.finance.yahoo.com/news/avery-dennison-corporation-avy-good-210010388.html",
+      "source": "Yahoo! Finance Canada",
+      "time": "20260611T210007",
+      "label": "Bullish",
+      "score": 0.606088
+    },
+    {
+      "title": "Silver Lake entities trim Dell (DELL) stake with share sales and Class B-to-C conversions",
+      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-5f4676ed4991.html",
+      "source": "Stock Titan",
+      "time": "20260611T205627",
+      "label": "Neutral",
+      "score": 0.114879
+    },
+    {
+      "title": "Dell Technologies (NYSE: DELL) holder Silver Lake sells 2,183 Class C shares",
+      "url": "https://www.stocktitan.net/sec-filings/DELL/form-4-dell-technologies-inc-insider-trading-activity-49411bd8c441.html",
+      "source": "Stock Titan",
+      "time": "20260611T205627",
+      "label": "Somewhat-Bearish",
+      "score": -0.246969
+    }
+  ]
+}

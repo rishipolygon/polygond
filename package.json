@@ -8,6 +8,7 @@
     "build": "node scripts/build-rss.mjs && vite build",
     "preview": "vite preview",
     "market": "node scripts/fetch-market.mjs",
+    "avdata": "node scripts/fetch-av.mjs",
     "rss": "node scripts/build-rss.mjs"
   },
   "dependencies": {

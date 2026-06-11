@@ -52,6 +52,16 @@ ALPHAVANTAGE_KEY=your-key-here
 
 For deploys, add the same key as a repository secret named `ALPHAVANTAGE_KEY` (GitHub repo → Settings → Secrets and variables → Actions). Free AV keys allow ~25 requests/day, which is why it's a fallback rather than the primary source.
 
+## Markets dashboard (/markets)
+
+The Markets page shows treasury yields (with the derived 2s10s spread), Fed funds, CPI YoY, unemployment, today's top gainers/losers/most-active stocks, and sentiment-tagged market headlines — all from Alpha Vantage via `public/avdata.json`. Refresh manually with:
+
+```
+npm run avdata
+```
+
+Each run costs 7 of the ~25 free daily AV requests (calls are auto-spaced for the 5/min limit, so it takes ~90 seconds). The deploy cron runs 3×/day to stay under the cap. If a run fails, the previous data ships.
+
 ## Local development
 
 ```

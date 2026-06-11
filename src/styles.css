@@ -388,6 +388,168 @@ h1, h2, h3 {
   .ticker-label { display: none; }
 }
 
+/* ——— Markets dashboard ——— */
+
+.macro-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-bottom: 4.5rem;
+}
+
+.macro-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.4rem 1.2rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.macro-stat .kicker {
+  font-size: 0.56rem;
+}
+
+.macro-value {
+  font-family: 'Sora Variable', sans-serif;
+  font-weight: 480;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+}
+
+.macro-unit {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-left: 0.15rem;
+}
+
+.macro-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.dash-section {
+  margin-bottom: 4.5rem;
+}
+
+.dash-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.75rem;
+}
+
+.movers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+@media (max-width: 760px) {
+  .movers-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.mover-col ul {
+  list-style: none;
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.mover-col li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+}
+
+.mover-sym {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.mover-price {
+  color: var(--muted);
+}
+
+.mover-chg {
+  font-weight: 500;
+}
+
+.mover-chg.down {
+  color: var(--muted);
+}
+
+.news-list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.news-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.news-list a {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr auto;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 1rem 0.25rem;
+  transition: background 0.2s ease;
+}
+
+.news-list a:hover .news-title {
+  opacity: 0.6;
+}
+
+.news-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--fg);
+}
+
+.news-tag.down {
+  color: var(--muted);
+}
+
+.news-title {
+  font-size: 0.92rem;
+  transition: opacity 0.2s ease;
+}
+
+.news-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .news-list a {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+
+.dash-disclaimer {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
 /* ——— Subscribe section ——— */
 
 .subscribe {

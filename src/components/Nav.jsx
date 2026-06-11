@@ -45,6 +45,7 @@ export default function Nav() {
       <nav className="nav-links">
         <NavLink to="/" end>Home</NavLink>
         <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/markets">Markets</NavLink>
         <NavLink to="/about">About</NavLink>
         <ThemeToggle />
       </nav>
