@@ -579,3 +579,178 @@ h1, h2, h3 {
   .hero-hex-inner { animation: none; opacity: 1; }
   .hero-title, .hero-links { animation: none; opacity: 1; }
 }
+
+/* ————————————————————————————————————————————————
+   Swiss skin — softer minimal alternative
+   Preview with ?skin=swiss · revert with ?skin=classic
+   Lighter weights, more whitespace, quieter labels,
+   asymmetric left-aligned hero.
+   ———————————————————————————————————————————————— */
+
+[data-skin='swiss'] {
+  --line: rgba(11, 12, 14, 0.09);
+  --line-strong: rgba(11, 12, 14, 0.35);
+  --surface: transparent;
+}
+
+[data-skin='swiss'][data-theme='dark'] {
+  --line: rgba(245, 244, 241, 0.11);
+  --line-strong: rgba(245, 244, 241, 0.4);
+}
+
+[data-skin='swiss'] body {
+  font-weight: 380;
+  line-height: 1.7;
+}
+
+[data-skin='swiss'] h1,
+[data-skin='swiss'] h2,
+[data-skin='swiss'] h3 {
+  font-weight: 480;
+  letter-spacing: -0.015em;
+}
+
+[data-skin='swiss'] .kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+}
+
+/* Nav: lighter, airier */
+[data-skin='swiss'] .nav {
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom-color: transparent;
+}
+
+[data-skin='swiss'] .nav-wordmark {
+  font-weight: 500;
+}
+
+[data-skin='swiss'] .nav-links a {
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+}
+
+[data-skin='swiss'] .nav-links a.active {
+  border-bottom-color: transparent;
+}
+
+[data-skin='swiss'] .theme-toggle {
+  border-color: transparent;
+}
+
+/* Hero: asymmetric, bottom-left anchored, smaller and calmer */
+[data-skin='swiss'] .hero {
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  gap: 2.25rem;
+  padding-bottom: 9rem;
+}
+
+[data-skin='swiss'] .hero-mark { animation: none; }
+
+[data-skin='swiss'] .hero-mark svg {
+  width: 88px;
+  height: 88px;
+}
+
+[data-skin='swiss'] .hero-title {
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+  font-weight: 460;
+  max-width: 26ch;
+}
+
+[data-skin='swiss'] .hero-links {
+  justify-content: flex-start;
+  gap: 3rem;
+}
+
+[data-skin='swiss'] .hero-link {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  border-bottom-color: transparent;
+}
+
+[data-skin='swiss'] .hero-link:hover {
+  border-bottom-color: var(--line-strong);
+}
+
+[data-skin='swiss'] .hero-corner {
+  font-size: 0.58rem;
+  opacity: 0.7;
+}
+
+/* Pages: more breathing room, smaller quieter headings */
+[data-skin='swiss'] .page {
+  padding-top: 11rem;
+}
+
+[data-skin='swiss'] .page-head {
+  margin-bottom: 5rem;
+}
+
+[data-skin='swiss'] .page-head h1 {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  margin: 1rem 0;
+}
+
+[data-skin='swiss'] .page-lede {
+  font-size: 0.98rem;
+}
+
+/* Blog list: restrained hover, generous rows */
+[data-skin='swiss'] .post-row {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+[data-skin='swiss'] .post-row:hover {
+  background: none;
+  padding-left: 0.5rem;
+}
+
+[data-skin='swiss'] .post-row-main h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+[data-skin='swiss'] .post-row-main p {
+  font-weight: 380;
+}
+
+/* Articles: smaller text, taller leading, quieter rules */
+[data-skin='swiss'] .article {
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+[data-skin='swiss'] .article-head {
+  margin: 3.5rem 0 4rem;
+}
+
+[data-skin='swiss'] .article-head h1 {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+}
+
+[data-skin='swiss'] .article h2 {
+  font-size: 1.2rem;
+  margin-top: 3.25rem;
+}
+
+[data-skin='swiss'] .article pre {
+  border: none;
+  border-left: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: none;
+}
+
+[data-skin='swiss'] .article code {
+  background: none;
+  padding: 0;
+}
+
+[data-skin='swiss'] .footer {
+  border-top-color: transparent;
+  padding-bottom: 2.5rem;
+}
