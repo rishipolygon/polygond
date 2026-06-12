@@ -846,21 +846,6 @@ h1, h2, h3 {
   margin-top: 1rem;
 }
 
-.subscribe-rss {
-  display: inline-block;
-  margin-top: 1.75rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  transition: color 0.2s ease;
-}
-
-.subscribe-rss:hover {
-  color: var(--fg);
-}
-
 /* ——— Generic page shell ——— */
 
 .page {
@@ -904,15 +889,6 @@ h1, h2, h3 {
 .coming-soon h1 {
   font-size: clamp(2rem, 6vw, 3.4rem);
   margin: 0.25rem 0;
-}
-
-.coming-soon-rss {
-  margin-top: 1.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
 }
 
 /* ——— Blog list ——— */

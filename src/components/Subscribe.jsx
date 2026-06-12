@@ -68,17 +68,14 @@ export default function Subscribe() {
           )}
           {status === 'soon' && (
             <p className="subscribe-msg">
-              Email signup is coming soon — for now, grab the RSS feed below.
+              Email signup is coming soon — check back shortly.
             </p>
           )}
           {status === 'error' && (
             <p className="subscribe-msg">
-              Something went wrong — try again, or use the RSS feed below.
+              Something went wrong — please try again.
             </p>
           )}
-          <a className="subscribe-rss" href="/rss.xml">
-            RSS FEED ↗
-          </a>
         </div>
       </div>
     </section>

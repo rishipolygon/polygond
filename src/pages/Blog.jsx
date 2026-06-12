@@ -8,9 +8,6 @@ export default function Blog() {
           Breakdowns, deep dives, and research notes are on the way. The first
           notes publish here shortly.
         </p>
-        <a className="coming-soon-rss" href="/rss.xml">
-          SUBSCRIBE VIA RSS ↗
-        </a>
       </div>
     </section>
   )
