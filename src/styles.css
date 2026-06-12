@@ -1150,6 +1150,23 @@ h1, h2, h3 {
   color: var(--muted);
 }
 
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-social {
+  display: inline-flex;
+  color: var(--muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social:hover {
+  color: var(--fg);
+  transform: translateY(-1px);
+}
+
 .footer-mono {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.62rem;
