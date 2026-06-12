@@ -1215,8 +1215,11 @@ h1, h2, h3 {
 
 /* ——— Phones ——— */
 @media (max-width: 600px) {
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: 0.6rem; letter-spacing: 0.14em; }
+  /* drop the wordmark on phones — the hexagon mark still links home —
+     so the nav links have room to breathe */
+  .nav-wordmark { display: none; }
+  .nav-links { gap: 1.25rem; }
+  .nav-links a { font-size: 0.64rem; letter-spacing: 0.16em; }
   .page { padding-top: 7.5rem; }
   .dash-section { margin-bottom: 3rem; }
   .macro-strip { margin-bottom: 3rem; }
@@ -1237,8 +1240,8 @@ h1, h2, h3 {
 
 /* ——— Very small phones (≈320px) ——— */
 @media (max-width: 380px) {
-  .nav-links { gap: 0.7rem; }
-  .nav-links a { font-size: 0.56rem; letter-spacing: 0.08em; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.12em; }
   .nav { padding-left: 1rem; padding-right: 1rem; }
 }
 
