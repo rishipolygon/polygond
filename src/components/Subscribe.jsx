@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-// To activate email signup, create a free form endpoint (formspree.io or
-// buttondown.com both have free tiers) and paste its URL here, e.g.
-// 'https://formspree.io/f/abcdwxyz'. Until then the form points people
-// at the RSS feed instead.
-const SUBSCRIBE_ENDPOINT = ''
+// Email signup via Web3Forms (no account — get a free access key at
+// https://web3forms.com by entering the address where you want to receive
+// notifications, then paste the key below). The key is safe to commit: it
+// only ever forwards mail to the address that registered it. Until it's set,
+// the form points people at the RSS feed instead.
+const WEB3FORMS_KEY = 'f90886ae-de67-46c4-9907-1f0851ef90a5'
 
 export default function Subscribe() {
   const [email, setEmail] = useState('')
@@ -12,18 +13,24 @@ export default function Subscribe() {
 
   async function onSubmit(e) {
     e.preventDefault()
-    if (!SUBSCRIBE_ENDPOINT) {
+    if (!WEB3FORMS_KEY) {
       setStatus('soon')
       return
     }
     setStatus('sending')
     try {
-      const res = await fetch(SUBSCRIBE_ENDPOINT, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          email,
+          subject: 'New Polygon Digital subscriber',
+          from_name: 'Polygon Digital',
+        }),
       })
-      setStatus(res.ok ? 'done' : 'error')
+      const data = await res.json().catch(() => ({}))
+      setStatus(res.ok && data.success ? 'done' : 'error')
     } catch {
       setStatus('error')
     }
