@@ -1,250 +1,219 @@
 ---
-title: "The token economy: how tokenization is quietly rewiring finance"
+title: "Tokens are the new currency: inside the AI token economy"
 date: 2026-06-29
-summary: Tokenization stopped being a pitch-deck slide and became a balance-sheet line. The data, the players actually shipping, and where it goes next.
-tags: digital assets, tokenization, markets
+summary: AI's smallest unit — the token — quietly became the meter for the entire industry. The volumes are staggering, the prices are collapsing, and compute is now sold by the token.
+tags: ai, tokens, compute
 ---
 
-<p class="article-dek">Tokenization spent a decade as a crypto talking point. Then, almost without fanfare, it became a balance-sheet reality — measured in tens of billions today and forecast in the trillions. Here is what is actually happening, who is building it, and why we think it is one of the most consequential shifts in markets for a generation.</p>
+<p class="article-dek">A token is the smallest thing an AI model deals in — a fragment of a word. It is also becoming the unit the whole industry is priced, measured and built around. Volumes are now counted in the quadrillions, the cost of intelligence is falling roughly 10x a year, and the people building the infrastructure have started calling tokens "the new currency." Here is what that actually means.</p>
 
-<p class="lead">Every so often a piece of financial plumbing gets rebuilt and almost nobody notices until it is done. Containerized shipping did it to trade. The index fund did it to investing. Right now <strong>tokenization</strong> is quietly doing it to the asset itself — the stock, the bond, the dollar, the building — by turning ownership into programmable code on a shared ledger.</p>
+<p class="lead">Every era of computing gets a unit it counts itself by. Mainframes had instructions per second. The web had page views. Mobile had the app install. The AI era has settled on something stranger and smaller: the <strong>token</strong> — a chunk of text, usually about three-quarters of a word, that a language model reads and writes one piece at a time.</p>
 
-The phrase "token economy" gets thrown around loosely, so let us be precise about what we mean — and why the skeptics who filed this under 2017-era hype are about to be surprised by the numbers.
+It sounds like an implementation detail. It is, increasingly, the economic atom of the entire field — the thing that gets metered, billed, optimized and forecast. This is the AI token economy, and it is moving faster than almost anyone predicted.
 
-## What we actually mean by a "token economy"
+## What a token actually is
 
-A **token** is a digital claim on something of value, recorded on a blockchain. That something can be a US Treasury bill, a share in an office tower, a gram of gold, a dollar in a bank account, or a loyalty point. **Tokenization** is the act of issuing that claim on-chain so it can be held, moved, split and settled without the tangle of intermediaries behind a traditional trade.
+When you send text to a model, it is chopped into tokens. "Tokenization" is short, but the model might see it as `token` + `ization`. Common words are one token; rare words split into several. A rough rule: **1 token ≈ 4 characters ≈ ¾ of a word.**
 
-The token economy, then, is the emerging system where real-world value moves with the speed, programmability and openness of the internet. Three properties set it apart from today's rails:
+Models charge for two streams: **input tokens** (your prompt, documents, context) and **output tokens** (what the model generates). Output is almost always more expensive, because generating is harder than reading. Everything else in the industry — speed, cost, context limits, even GPU economics — ultimately reduces to tokens in and tokens out.
 
-- **It settles instantly, around the clock.** No T+2, no waiting for a clearing house to open on Monday.
-- **It is divisible.** A \$50-million building can be owned in \$100 slices.
-- **It is programmable.** A token can carry its own rules — pay a dividend daily, restrict who can hold it, or act as collateral the moment it is issued.
+<div class="callout"><span class="callout-tag">The one-line version</span>A token is to AI what a barrel is to oil: a small, standardized unit that turns a messy physical process into something you can price, trade and scale. The whole industry now runs on the meter.</div>
 
-<div class="callout"><span class="callout-tag">The one-line version</span>Tokenization does not invent new assets. It re-plumbs the ones we already have — faster to move, cheaper to settle, easier to own in fractions. A boring sentence describing a profound change.</div>
+## The volumes are almost incomprehensible
 
-## From hype to balance sheet: the numbers that matter
-
-For years, real-world asset (RWA) tokenization was a slide in a venture deck. That changed. The total value of tokenized real-world assets — excluding stablecoins — grew almost **fivefold in three years** to roughly **\$24 billion by mid-2025**, including a 266% surge through 2025 alone.<sup class="cite"><a href="#fn3">3</a></sup> By early 2026, depending on the tracker, the figure had pushed toward the mid-\$30-billion range.<sup class="cite"><a href="#fn5">5</a></sup>
+The clearest sign that tokens are the unit that matters is how obsessively the largest players now report them. Google is the bellwether. Its monthly token volume went from **9.7 trillion in early 2024**, to **480 trillion by May 2025** — a roughly 50x jump in a year — and kept going: **980 trillion** by July, past **1.3 quadrillion** by October, and roughly **3.2 quadrillion tokens per month by mid-2026.**<sup class="cite"><a href="#fn1">1</a></sup><sup class="cite"><a href="#fn2">2</a></sup><sup class="cite"><a href="#fn3">3</a></sup><sup class="cite"><a href="#fn4">4</a></sup>
 
 <div class="stat-band">
-<div class="stat"><span class="stat-v">~$24B</span><span class="stat-l">Tokenized RWAs, ex-stablecoins, mid-2025<sup class="cite"><a href="#fn3">3</a></sup></span></div>
-<div class="stat"><span class="stat-v">266%</span><span class="stat-l">RWA growth during 2025<sup class="cite"><a href="#fn3">3</a></sup></span></div>
-<div class="stat"><span class="stat-v">$33T</span><span class="stat-l">Stablecoin on-chain volume, 2025<sup class="cite"><a href="#fn7">7</a></sup></span></div>
-<div class="stat"><span class="stat-v">$2.5B+</span><span class="stat-l">In BlackRock's tokenized BUIDL fund<sup class="cite"><a href="#fn4">4</a></sup></span></div>
+<div class="stat"><span class="stat-v">3.2Q</span><span class="stat-l">Tokens Google processes per month, mid-2026<sup class="cite"><a href="#fn3">3</a></sup></span></div>
+<div class="stat"><span class="stat-v">~330x</span><span class="stat-l">Growth in monthly tokens in ~2 years<sup class="cite"><a href="#fn1">1</a></sup></span></div>
+<div class="stat"><span class="stat-v">~10x/yr</span><span class="stat-l">Fall in cost of GPT-4-level intelligence<sup class="cite"><a href="#fn5">5</a></sup></span></div>
+<div class="stat"><span class="stat-v">$1T</span><span class="stat-l">Projected annual AI compute demand by 2027<sup class="cite"><a href="#fn9">9</a></sup></span></div>
 </div>
 
 <figure class="fig">
-<p class="fig-title">Tokenized real-world assets are compounding fast</p>
-<p class="fig-sub">Total value of tokenized RWAs, excluding stablecoins · US$ billions</p>
-<svg viewBox="0 0 700 320" role="img" aria-label="Bar chart: tokenized RWA value grows from $5 billion in 2022 to $24 billion in 2025, with a projected $36 billion in 2026.">
+<p class="fig-title">From trillions to quadrillions in two years</p>
+<p class="fig-sub">Tokens processed per month, Google · trillions (T) · 1,000T = 1 quadrillion</p>
+<svg viewBox="0 0 700 320" role="img" aria-label="Bar chart: Google monthly token processing grows from 9.7 trillion in early 2024 to 480 trillion in May 2025, 1,300 trillion in October 2025, and 3,200 trillion by mid-2026.">
   <g stroke="currentColor" stroke-opacity="0.12">
-    <line x1="64" y1="40" x2="690" y2="40"/>
-    <line x1="64" y1="102" x2="690" y2="102"/>
-    <line x1="64" y1="164" x2="690" y2="164"/>
-    <line x1="64" y1="226" x2="690" y2="226"/>
-    <line x1="64" y1="278" x2="690" y2="278"/>
+    <line x1="78" y1="40" x2="690" y2="40"/>
+    <line x1="78" y1="119" x2="690" y2="119"/>
+    <line x1="78" y1="198" x2="690" y2="198"/>
+    <line x1="78" y1="278" x2="690" y2="278"/>
   </g>
   <g text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.6">
-    <text x="54" y="44">$40B</text>
-    <text x="54" y="106">$30B</text>
-    <text x="54" y="168">$20B</text>
-    <text x="54" y="230">$10B</text>
-    <text x="54" y="282">$0</text>
+    <text x="68" y="44">3,000T</text>
+    <text x="68" y="123">2,000T</text>
+    <text x="68" y="202">1,000T</text>
+    <text x="68" y="282">0</text>
   </g>
-  <!-- baseline y=278; 238px tall = $40B => 5.95px per $B -->
-  <rect x="120" y="248" width="96" height="30" fill="currentColor" fill-opacity="0.85"/>
-  <text x="168" y="240" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">$5B</text>
-  <text x="168" y="300" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.6">2022</text>
+  <!-- baseline y=278; 238px = 3000T => 0.0793px per T -->
+  <rect x="120" y="275" width="86" height="3" fill="currentColor" fill-opacity="0.85"/>
+  <text x="163" y="267" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">9.7T</text>
+  <text x="163" y="300" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">early 2024</text>
 
-  <rect x="330" y="135" width="96" height="143" fill="currentColor" fill-opacity="0.85"/>
-  <text x="378" y="127" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">$24B</text>
-  <text x="378" y="300" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.6">2025</text>
+  <rect x="258" y="240" width="86" height="38" fill="currentColor" fill-opacity="0.85"/>
+  <text x="301" y="232" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">480T</text>
+  <text x="301" y="300" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">May 2025</text>
 
-  <rect x="540" y="64" width="96" height="214" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-dasharray="5 4"/>
-  <text x="588" y="56" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">~$36B</text>
-  <text x="588" y="300" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.6">2026 (est.)</text>
+  <rect x="396" y="175" width="86" height="103" fill="currentColor" fill-opacity="0.85"/>
+  <text x="439" y="167" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">1,300T</text>
+  <text x="439" y="300" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">Oct 2025</text>
+
+  <rect x="534" y="24" width="86" height="254" fill="currentColor" fill-opacity="0.85"/>
+  <text x="577" y="16" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">3,200T</text>
+  <text x="577" y="300" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">mid-2026</text>
 </svg>
-<figcaption>Sources: CoinDesk / RWA.xyz, 2022–2025<sup class="cite"><a href="#fn3">3</a></sup>; 2026 estimate via Coinlaw asset-tokenization statistics.<sup class="cite"><a href="#fn5">5</a></sup> Excludes stablecoins, tracked separately below. Dashed bar is projected.</figcaption>
+<figcaption>Sources: Tomasz Tunguz on token consumption<sup class="cite"><a href="#fn1">1</a></sup>; reporting on Gemini crossing the quadrillion mark<sup class="cite"><a href="#fn2">2</a></sup>; Google I/O 2026 figures via The Register and CryptoBriefing.<sup class="cite"><a href="#fn3">3</a></sup><sup class="cite"><a href="#fn4">4</a></sup> "9.7T" bar shown at minimum height for visibility.</figcaption>
 </figure>
 
-These are still small numbers against a multi-hundred-trillion-dollar global asset base — which is precisely the point. We are watching the on-ramp, not the highway.
+That is one company, on one set of surfaces. Add OpenAI, Anthropic, Microsoft, Meta, and the long tail of startups, and the picture is of a brand-new commodity being produced at a scale that did not exist three years ago.
 
-## The asset classes leading the charge
+## The price of intelligence is collapsing
 
-Tokenization is not spreading evenly. It is concentrating where the benefit is most obvious: **yield-bearing, standardized instruments** institutions already understand and trade in size.
+Here is the counterintuitive part. As volumes exploded, the **price per token fell off a cliff.** Andreessen Horowitz named it "LLMflation": the cost of a given level of AI capability is dropping about **10x every year** — faster than the cost curves of PC computing or dotcom-era bandwidth.<sup class="cite"><a href="#fn5">5</a></sup>
 
-**Tokenized US Treasuries and money-market funds** are the breakout category, growing to roughly **\$9.6 billion** at about 120% year over year.<sup class="cite"><a href="#fn6">6</a></sup> The appeal is simple: a dollar-safe, yield-bearing instrument that pays out daily and redeems at any hour. BlackRock's BUIDL fund alone scaled past **\$2.5 billion** across nine blockchains.<sup class="cite"><a href="#fn4">4</a></sup>
-
-**On-chain private credit** has quietly become one of the largest RWA categories, channeling capital to real businesses through protocols that bring loan origination and servicing on-chain.<sup class="cite"><a href="#fn6">6</a></sup> And **commodities** — tokenized gold especially — gave the sector a fresh leg of growth, while real estate remains the largest slice of the broader tokenization market by revenue, near **30%**.<sup class="cite"><a href="#fn2">2</a></sup>
+The concrete version: accessing **GPT-4-level performance cost around \$20 per million tokens in late 2022 — and roughly \$0.40 by 2025.**<sup class="cite"><a href="#fn5">5</a></sup> Epoch AI, measuring the price to hit GPT-4's score on PhD-level science questions, found it falling as much as **40x per year**, with declines across tasks ranging from 9x to 900x annually.<sup class="cite"><a href="#fn6">6</a></sup>
 
 <figure class="fig">
-<p class="fig-title">What has actually been tokenized so far</p>
-<p class="fig-sub">Approximate composition of tokenized RWAs by value, ex-stablecoins</p>
-<svg viewBox="0 0 700 290" role="img" aria-label="Donut chart: private credit and tokenized Treasuries are the two largest categories of tokenized real-world assets, followed by commodities and other assets.">
-  <g transform="translate(150,145)">
-    <circle r="84" fill="none" stroke="currentColor" stroke-opacity="0.1" stroke-width="40"/>
-    <!-- circumference r=84 => 527.79 -->
-    <!-- private credit 42% => 221.7 -->
-    <circle r="84" fill="none" stroke="currentColor" stroke-opacity="0.9" stroke-width="40" stroke-dasharray="221.7 306.1" transform="rotate(-90)"/>
-    <!-- treasuries 33% => 174.2 ; offset -221.7 -->
-    <circle r="84" fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-width="40" stroke-dasharray="174.2 353.6" stroke-dashoffset="-221.7" transform="rotate(-90)"/>
-    <!-- commodities 13% => 68.6 ; offset -395.9 -->
-    <circle r="84" fill="none" stroke="currentColor" stroke-opacity="0.38" stroke-width="40" stroke-dasharray="68.6 459.2" stroke-dashoffset="-395.9" transform="rotate(-90)"/>
-    <!-- other 12% => 63.3 ; offset -464.5 -->
-    <circle r="84" fill="none" stroke="currentColor" stroke-opacity="0.2" stroke-width="40" stroke-dasharray="63.3 464.5" stroke-dashoffset="-464.5" transform="rotate(-90)"/>
-    <text x="0" y="-2" text-anchor="middle" font-size="22" font-weight="600" fill="currentColor" font-family="'Sora Variable',sans-serif">~$24B</text>
-    <text x="0" y="20" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.6">ON-CHAIN</text>
+<p class="fig-title">LLMflation: the cost of GPT-4-level intelligence</p>
+<p class="fig-sub">Approx. price to access GPT-4-equivalent capability · US$ per million tokens</p>
+<svg viewBox="0 0 700 300" role="img" aria-label="Descending bar chart: the cost of GPT-4-level intelligence falls from about $20 per million tokens in late 2022 to about $0.40 per million tokens by 2025.">
+  <g stroke="currentColor" stroke-opacity="0.12">
+    <line x1="64" y1="40" x2="690" y2="40"/>
+    <line x1="64" y1="113" x2="690" y2="113"/>
+    <line x1="64" y1="186" x2="690" y2="186"/>
+    <line x1="64" y1="258" x2="690" y2="258"/>
   </g>
-  <g transform="translate(300,62)" font-size="13.5" fill="currentColor">
-    <rect x="0" y="0" width="14" height="14" fill="currentColor" fill-opacity="0.9"/>
-    <text x="24" y="12">Private credit — ~42%</text>
-    <rect x="0" y="38" width="14" height="14" fill="currentColor" fill-opacity="0.6"/>
-    <text x="24" y="50">Tokenized US Treasuries — ~33%</text>
-    <rect x="0" y="76" width="14" height="14" fill="currentColor" fill-opacity="0.38"/>
-    <text x="24" y="88">Commodities (esp. gold) — ~13%</text>
-    <rect x="0" y="114" width="14" height="14" fill="currentColor" fill-opacity="0.2"/>
-    <text x="24" y="126">Real estate, funds &amp; other — ~12%</text>
+  <g text-anchor="end" font-size="12" fill="currentColor" fill-opacity="0.6">
+    <text x="54" y="44">$20</text>
+    <text x="54" y="117">$13</text>
+    <text x="54" y="190">$7</text>
+    <text x="54" y="262">$0</text>
   </g>
+  <!-- baseline y=258; 218px = $20 => 10.9px per $ -->
+  <rect x="110" y="40" width="90" height="218" fill="currentColor" fill-opacity="0.85"/>
+  <text x="155" y="32" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">$20</text>
+  <text x="155" y="280" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">late 2022</text>
+
+  <rect x="270" y="231" width="90" height="27" fill="currentColor" fill-opacity="0.85"/>
+  <text x="315" y="223" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">~$2.50</text>
+  <text x="315" y="280" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">2023</text>
+
+  <rect x="430" y="249" width="90" height="9" fill="currentColor" fill-opacity="0.85"/>
+  <text x="475" y="241" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">~$0.80</text>
+  <text x="475" y="280" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">2024</text>
+
+  <rect x="590" y="253" width="90" height="5" fill="currentColor" fill-opacity="0.85"/>
+  <text x="635" y="245" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">~$0.40</text>
+  <text x="635" y="280" text-anchor="middle" font-size="11.5" fill="currentColor" fill-opacity="0.6">2025</text>
 </svg>
-<figcaption>Illustrative composition; shares are approximate and vary by data provider and date. Anchored on reported tokenized-Treasury value (~$9.6B)<sup class="cite"><a href="#fn6">6</a></sup> and category rankings from industry trackers.<sup class="cite"><a href="#fn5">5</a></sup></figcaption>
+<figcaption>Endpoints (~$20 in late 2022, ~$0.40 by 2025) from a16z's LLMflation analysis<sup class="cite"><a href="#fn5">5</a></sup>; interim years are illustrative of the ~10x-per-year trend documented by a16z and Epoch AI.<sup class="cite"><a href="#fn6">6</a></sup></figcaption>
 </figure>
 
-## Stablecoins: the part that is already winning
+## The 2026 price map
 
-If RWAs are the on-ramp, **stablecoins are the engine already running at full throttle.** These dollar-pegged tokens are the settlement layer the rest of the token economy moves on — and the scale is hard to overstate.
-
-In 2025, stablecoins processed roughly **\$33 trillion** in on-chain transaction volume, **surpassing the combined ~\$25.5 trillion** handled by Visa and Mastercard.<sup class="cite"><a href="#fn7">7</a></sup> This is not speculative churn: around **60% of stablecoin flows are now business-to-business** — cross-border treasury, supplier payments, procurement.<sup class="cite"><a href="#fn7">7</a></sup>
+Today the market is split between **frontier models** — the most capable, priced at a premium — and a fast-improving tier of **budget models** that are good enough for most tasks at a fraction of the cost. The spread between them is roughly **100x.**
 
 <figure class="fig">
-<p class="fig-title">Stablecoins now move more money than the card giants</p>
-<p class="fig-sub">2025 annual settlement volume · US$ trillions</p>
-<svg viewBox="0 0 700 210" role="img" aria-label="Bar chart: 2025 settlement volume — stablecoins $33 trillion versus Visa and Mastercard combined $25.5 trillion.">
-  <!-- bars start x=210, scale 470px = $35T => 13.43px per $T -->
-  <text x="200" y="52" text-anchor="end" font-size="13.5" font-weight="600" fill="currentColor">Stablecoins</text>
-  <rect x="210" y="34" width="443" height="32" fill="currentColor" fill-opacity="0.9"/>
-  <text x="663" y="56" font-size="14" font-weight="600" fill="currentColor">$33T</text>
-
-  <text x="200" y="122" text-anchor="end" font-size="13.5" font-weight="600" fill="currentColor">Visa + Mastercard</text>
-  <rect x="210" y="104" width="342" height="32" fill="currentColor" fill-opacity="0.32"/>
-  <text x="562" y="126" font-size="14" font-weight="600" fill="currentColor" fill-opacity="0.7">$25.5T</text>
-
-  <g font-size="11" fill="currentColor" fill-opacity="0.55">
-    <line x1="210" y1="162" x2="680" y2="162" stroke="currentColor" stroke-opacity="0.15"/>
-    <text x="210" y="182" text-anchor="middle">$0</text>
-    <text x="344" y="182" text-anchor="middle">$10T</text>
-    <text x="478" y="182" text-anchor="middle">$20T</text>
-    <text x="613" y="182" text-anchor="middle">$30T</text>
+<p class="fig-title">Frontier vs. budget: output price, mid-2026</p>
+<p class="fig-sub">Output tokens · US$ per million · selected models</p>
+<svg viewBox="0 0 700 290" role="img" aria-label="Horizontal bar chart of 2026 output token prices per million: GPT-5.5 $30, Claude Opus 4.8 $25, GPT-5.4 $15, Gemini 3.1 Pro $12, Gemini 3.1 Flash-Lite $0.40, DeepSeek V4 Flash $0.28.">
+  <!-- bars start x=170, scale 500px = $32 => 15.625px per $ -->
+  <g font-size="12.5" font-weight="600" fill="currentColor">
+    <text x="160" y="32" text-anchor="end">GPT-5.5</text>
+    <text x="160" y="74" text-anchor="end">Claude Opus 4.8</text>
+    <text x="160" y="116" text-anchor="end">GPT-5.4</text>
+    <text x="160" y="158" text-anchor="end">Gemini 3.1 Pro</text>
+    <text x="160" y="200" text-anchor="end">Gemini 3.1 Flash-Lite</text>
+    <text x="160" y="242" text-anchor="end">DeepSeek V4 Flash</text>
   </g>
+  <rect x="170" y="16" width="469" height="24" fill="currentColor" fill-opacity="0.9"/>
+  <text x="647" y="34" font-size="13" font-weight="600" fill="currentColor">$30</text>
+  <rect x="170" y="58" width="391" height="24" fill="currentColor" fill-opacity="0.78"/>
+  <text x="569" y="76" font-size="13" font-weight="600" fill="currentColor">$25</text>
+  <rect x="170" y="100" width="234" height="24" fill="currentColor" fill-opacity="0.62"/>
+  <text x="412" y="118" font-size="13" font-weight="600" fill="currentColor">$15</text>
+  <rect x="170" y="142" width="188" height="24" fill="currentColor" fill-opacity="0.5"/>
+  <text x="366" y="160" font-size="13" font-weight="600" fill="currentColor">$12</text>
+  <rect x="170" y="184" width="7" height="24" fill="currentColor" fill-opacity="0.35"/>
+  <text x="185" y="202" font-size="13" font-weight="600" fill="currentColor">$0.40</text>
+  <rect x="170" y="226" width="5" height="24" fill="currentColor" fill-opacity="0.35"/>
+  <text x="183" y="244" font-size="13" font-weight="600" fill="currentColor">$0.28</text>
 </svg>
-<figcaption>Source: Morph report, via crypto.news and Visual Capitalist, 2025.<sup class="cite"><a href="#fn8">8</a></sup><sup class="cite"><a href="#fn7">7</a></sup> Adjusted-volume methodologies vary; figures indicate scale, not a like-for-like accounting standard.</figcaption>
+<figcaption>Prices per million output tokens, verified late June 2026, via pricepertoken.com and CloudZero.<sup class="cite"><a href="#fn7">7</a></sup><sup class="cite"><a href="#fn8">8</a></sup> List prices change frequently; treat as a snapshot.</figcaption>
 </figure>
 
-> Stablecoins have moved beyond their speculative origins to become a core settlement layer for global finance — at a scale that rivals the world's largest payment networks.
+The detail underneath matters too — input and output are priced separately, and **prompt caching** (reusing a fixed context like a system prompt or codebase) can cut input costs by roughly 90%.<sup class="cite"><a href="#fn7">7</a></sup>
 
-## Who is actually building this
+| Model | Input \$/M | Output \$/M | Tier |
+| --- | --- | --- | --- |
+| GPT-5.5 | \$5 | \$30 | Frontier |
+| Claude Opus 4.8 | \$5 | \$25 | Frontier |
+| Gemini 3.1 Pro | \$2 | \$12 | Frontier (value) |
+| GLM-5.2 | \$1.40 | \$4.40 | Mid |
+| Gemini 3.1 Flash-Lite | \$0.10 | \$0.40 | Budget |
+| DeepSeek V4 Flash | \$0.14 | \$0.28 | Budget |
 
-The most convincing signal is not the price of any token. It is the *names*. The institutions building production tokenization rails are the ones that already run the financial system.
+## Why "tokens are the new currency"
 
-| Institution / project | What they built | Why it matters |
-| --- | --- | --- |
-| BlackRock (BUIDL) | Tokenized US-Treasury fund, 9 chains, \$2.5B+ AUM<sup class="cite"><a href="#fn4">4</a></sup> | The largest asset manager treats tokenization as core product, not a pilot |
-| J.P. Morgan (Kinexys) | Bank blockchain settling \$2B+/day; \$1.5T+ notional to date<sup class="cite"><a href="#fn9">9</a></sup> | A systemically important bank running real settlement volume on-chain |
-| Ondo Finance | Tokenized Treasuries and yield products bridging TradFi and DeFi<sup class="cite"><a href="#fn6">6</a></sup> | A native bridge making institutional yield accessible on-chain |
-| Franklin Templeton | On-chain US government money fund (BENJI)<sup class="cite"><a href="#fn1">1</a></sup> | A traditional manager with a live, regulated tokenized fund |
-| Aave (Horizon) | Borrow stablecoins against tokenized RWAs<sup class="cite"><a href="#fn6">6</a></sup> | Makes tokenized assets *useful* after issuance, not just held |
+This is not just analyst framing — it is how the people building the infrastructure now talk. At NVIDIA's GTC 2026, Jensen Huang reframed the data center itself as an **"AI factory"** whose product is tokens, and declared that **tokens are becoming the new fundamental currency**, with global AI compute demand heading toward **\$1 trillion a year by 2027.**<sup class="cite"><a href="#fn9">9</a></sup> He even quipped that in Silicon Valley, "tokens are a recruiting tool — people are asking, *how many tokens come with my job?*"<sup class="cite"><a href="#fn9">9</a></sup>
 
-When BlackRock, J.P. Morgan and Franklin Templeton are all shipping rather than theorizing, the conversation has moved from "if" to "how fast."
+The logic is straightforward once you accept the premise. If intelligence is delivered as tokens, then a token is a unit of *cognitive work* — and whoever can produce the most useful tokens per dollar, per watt, per second, wins.<sup class="cite"><a href="#fn10">10</a></sup>
 
-## The use cases that go beyond speculation
+> If oil powered the industrial economy, tokens are shaping up to be the raw throughput of the cognitive one — produced in factories, sold by the meter, and measured to the decimal.
 
-It helps to ground this in what tokens actually *do* once they exist. The strongest use cases are not exotic — they are old problems solved better:
+## The paradox: cheaper tokens, bigger bills
 
-- **Collateral that never sleeps.** A tokenized money-market fund can be posted as collateral and redeemed intraday. DBS Bank and Binance both moved to accept tokenized RWAs as yield-bearing collateral, keeping capital productive instead of idle.<sup class="cite"><a href="#fn6">6</a></sup>
-- **Fractional ownership.** Splitting a building, fund or bond into small units widens access and deepens liquidity in assets that were historically lumpy and illiquid.
-- **Instant, programmable settlement.** J.P. Morgan's intraday-repo application alone enabled hundreds of billions in volume by collapsing settlement from days to minutes.<sup class="cite"><a href="#fn9">9</a></sup>
-- **Cross-border payments.** Stablecoins move dollars worldwide in seconds for cents — which is why corporate treasurers adopted them faster than retail ever did.<sup class="cite"><a href="#fn7">7</a></sup>
+So if prices are collapsing, why are AI budgets exploding? Because demand is outrunning deflation — a textbook Jevons paradox. Two forces drive it:
 
-## How big does this get? The forecast wars
+**Reasoning models think out loud.** Newer models generate long internal chains of "thinking tokens" before answering. A single hard question can quietly consume thousands of tokens the user never sees.<sup class="cite"><a href="#fn9">9</a></sup>
 
-Here honesty matters. The headline forecasts for 2030 disagree by an *order of magnitude* — and anyone selling you false precision is selling you something.
+**Agents run in loops.** An autonomous agent calls tools, reads results, writes code, checks its work, and calls other agents — often burning **millions of tokens** to complete one task.<sup class="cite"><a href="#fn10">10</a></sup> As Huang put it, every SaaS company is on its way to becoming an "Agent-as-a-Service" company.
 
-<figure class="fig">
-<p class="fig-title">The 2030 forecast is a genuine argument, not a consensus</p>
-<p class="fig-sub">Projected size of the tokenized-asset market · US$ trillions</p>
-<svg viewBox="0 0 700 230" role="img" aria-label="Bar chart of tokenization forecasts: McKinsey about $2 trillion by 2030, BCG about $16 trillion by 2030, Standard Chartered about $30 trillion by 2034.">
-  <!-- bars start x=235, scale 430px = $32T => 13.44px per T -->
-  <text x="225" y="46" text-anchor="end" font-size="12.5" font-weight="600" fill="currentColor">McKinsey · 2030</text>
-  <rect x="235" y="30" width="27" height="28" fill="currentColor" fill-opacity="0.32"/>
-  <text x="272" y="50" font-size="13.5" font-weight="600" fill="currentColor" fill-opacity="0.75">~$2T</text>
-
-  <text x="225" y="110" text-anchor="end" font-size="12.5" font-weight="600" fill="currentColor">BCG / ADDX · 2030</text>
-  <rect x="235" y="94" width="215" height="28" fill="currentColor" fill-opacity="0.6"/>
-  <text x="460" y="114" font-size="13.5" font-weight="600" fill="currentColor">~$16T</text>
-
-  <text x="225" y="174" text-anchor="end" font-size="12.5" font-weight="600" fill="currentColor">Std. Chartered · 2034</text>
-  <rect x="235" y="158" width="403" height="28" fill="currentColor" fill-opacity="0.9"/>
-  <text x="648" y="178" font-size="13.5" font-weight="600" fill="currentColor">~$30T</text>
-
-  <g font-size="11" fill="currentColor" fill-opacity="0.55">
-    <line x1="235" y1="200" x2="665" y2="200" stroke="currentColor" stroke-opacity="0.15"/>
-    <text x="235" y="220" text-anchor="middle">$0</text>
-    <text x="369" y="220" text-anchor="middle">$10T</text>
-    <text x="504" y="220" text-anchor="middle">$20T</text>
-    <text x="638" y="220" text-anchor="middle">$30T</text>
-  </g>
-</svg>
-<figcaption>Sources: McKinsey, conservative ~$2T by 2030<sup class="cite"><a href="#fn11">11</a></sup>; BCG / ADDX, ~$16T by 2030<sup class="cite"><a href="#fn10">10</a></sup>; Standard Chartered, ~$30T by 2034.<sup class="cite"><a href="#fn12">12</a></sup> Note the differing target years and definitions.</figcaption>
-</figure>
-
-What does an 8x spread between credible forecasters tell you? Not that the data is bad — that the **outcome depends on policy and infrastructure, not technology.** The technology works. Whether tokenization reaches \$2 trillion or \$30 trillion hinges on regulatory clarity, interoperable standards and whether deep secondary-market liquidity actually shows up. That is the real bet.
+The result is what some call the **LLM cost paradox**: per-token prices fall, yet total spend climbs, because each interaction now consumes vastly more tokens than the simple chatbot turn of 2023.<sup class="cite"><a href="#fn11">11</a></sup> Cheaper units, far more units.
 
 ## The honest caveats
 
-It would be a disservice to write a one-sided story. The token economy has real, unresolved problems.
+**A token is not a standard unit.** Different models tokenize text differently, so "a million tokens" is not strictly comparable across providers — it is a meter that each vendor calibrates slightly differently.
 
-**Liquidity is shallow.** Issuing a token is easy; building a deep, two-sided market for it is hard. Much of what has been tokenized still trades thinly.
+**List price is not cost.** Headline per-token prices can sit below the true cost of serving them; some pricing is subsidized to win market share.<sup class="cite"><a href="#fn8">8</a></sup>
 
-**Fragmentation.** Value is scattered across dozens of blockchains that do not natively talk to one another. Cross-chain settlement — the kind J.P. Morgan's Kinexys is testing<sup class="cite"><a href="#fn9">9</a></sup> — is progress, but the standards war is not settled.
+**The meter creates lock-in.** Once a workflow is tuned to one model's tokenizer, context window and caching behavior, switching has real friction.
 
-**Regulation is half-built.** The 2025 passage of the US GENIUS Act gave stablecoins their first federal framework — a genuine milestone for the rails everything settles on.<sup class="cite"><a href="#fn1">1</a></sup> But rules for tokenized securities, custody and cross-border recognition remain a patchwork.
-
-**The plumbing is new.** Smart-contract bugs, custody failures and oracle risk are real. "Programmable" cuts both ways: code that can pay a dividend automatically can also fail automatically.
-
-<div class="callout"><span class="callout-tag">Our read</span>2025 settled whether tokenization is operationally viable in institutional settings — it is. The open question for 2026 and beyond is whether it scales into durable market structure. Viability is proven; scale is the work.<sup class="cite"><a href="#fn6">6</a></sup></div>
+**Tokens have a footprint.** Every token is computation, and computation is energy and water. Quadrillions of tokens a month is also a very large power bill.<sup class="cite"><a href="#fn12">12</a></sup>
 
 ## The bottom line
 
-Strip away the crypto baggage and the picture is clear. The world's largest asset manager runs a multi-billion-dollar tokenized fund. A systemically important bank settles billions a day on a blockchain. Stablecoins move more money than Visa and Mastercard combined. None of that is a prediction — it is a description of today.
+Three years ago, "token" was jargon you only met if you read API docs. Today it is the unit a trillion-dollar industry counts, prices and forecasts itself by. Volumes are growing by orders of magnitude a year, the cost of a unit of intelligence is in freefall, and the largest hardware company on earth is describing its product as a token factory.
 
-The token economy is not "the future" in the vague, promotional sense. It is a migration already underway, asset class by asset class, starting with the boring, high-value, standardized instruments and working outward. The interesting question is no longer whether finance gets tokenized. It is how much of *your* portfolio, payments and contracts will run on these rails five years from now — and whether you will have noticed the switch.
+That combination — exploding supply, collapsing unit cost, and a brand-new unit of value — is exactly what the start of a major economic platform looks like. The token economy is not a metaphor about the future of AI. It is the accounting system the present is already being built on.
 
 <div class="takeaways">
 <h3>The five things to remember</h3>
 <ol>
-<li><strong>It is real and measurable.</strong> Tokenized RWAs grew ~5x in three years to ~$24B, while stablecoins moved $33T in 2025.</li>
-<li><strong>Treasuries and private credit lead</strong> — yield-bearing, standardized assets institutions already trust.</li>
-<li><strong>The builders are incumbents</strong> — BlackRock, J.P. Morgan, Franklin Templeton — not only crypto startups.</li>
-<li><strong>Forecasts disagree by 8x</strong> ($2T–$30T) because the outcome rides on policy and liquidity, not technology.</li>
-<li><strong>Viability is proven; scale is the open question.</strong> Liquidity, fragmentation and regulation are the gating factors.</li>
+<li><strong>A token is the atom.</strong> ~¾ of a word; everything in AI — cost, speed, context, GPU economics — is metered in tokens.</li>
+<li><strong>Volumes are exploding.</strong> Google alone went from ~9.7T tokens/month to ~3.2 quadrillion in about two years.</li>
+<li><strong>Intelligence is deflating ~10x a year.</strong> GPT-4-level capability fell from ~$20 to ~$0.40 per million tokens.</li>
+<li><strong>Tokens are being treated as currency.</strong> NVIDIA frames data centers as token factories; compute demand is heading toward $1T/yr.</li>
+<li><strong>Cheaper tokens, bigger bills.</strong> Reasoning and agents consume orders of magnitude more tokens, so total spend keeps rising.</li>
 </ol>
 </div>
 
 ## References
 
 <ol class="refs">
-<li id="fn1"><span class="src">Fortune Business Insights</span> — Tokenization Market Size, Share, Forecast [2034]. <a href="https://www.fortunebusinessinsights.com/tokenization-market-107201" target="_blank" rel="noopener">fortunebusinessinsights.com</a></li>
-<li id="fn2"><span class="src">Mordor Intelligence</span> — Asset Tokenization Market Size, Trends, Share &amp; Industry Report. <a href="https://www.mordorintelligence.com/industry-reports/asset-tokenization-market" target="_blank" rel="noopener">mordorintelligence.com</a></li>
-<li id="fn3"><span class="src">CoinDesk</span> (Jun 2025) — Real-World Asset Tokenization Market Has Grown Almost Fivefold in 3 Years. <a href="https://www.coindesk.com/business/2025/06/26/real-world-asset-tokenization-market-has-grown-almost-fivefold-in-3-years" target="_blank" rel="noopener">coindesk.com</a></li>
-<li id="fn4"><span class="src">Tech for Impact Summit</span> — RWA Tokenization 2026: BlackRock BUIDL Passed $2.5B. <a href="https://tech4impactsummit.com/blog/rwa-tokenization-reshaping-capital-markets/" target="_blank" rel="noopener">tech4impactsummit.com</a></li>
-<li id="fn5"><span class="src">Coinlaw</span> — Asset Tokenization Statistics 2026: RWA Market Size &amp; TVL. <a href="https://coinlaw.io/asset-tokenization-statistics/" target="_blank" rel="noopener">coinlaw.io</a></li>
-<li id="fn6"><span class="src">InvestaX</span> — Real World Asset Tokenization: Trends and Outlook for 2026. <a href="https://investax.io/blog/real-world-asset-tokenization-trends-and-outlook-for-2026" target="_blank" rel="noopener">investax.io</a></li>
-<li id="fn7"><span class="src">crypto.news</span> — Stablecoins now move more money than Visa and Mastercard combined (citing Morph report). <a href="https://crypto.news/stablecoins-now-move-more-money-than-visa-and-mastercard-combined/" target="_blank" rel="noopener">crypto.news</a></li>
-<li id="fn8"><span class="src">Visual Capitalist</span> — Charted: Stablecoins Are Now Bigger Than Visa or Mastercard. <a href="https://www.visualcapitalist.com/charted-stablecoins-are-now-bigger-than-visa-or-mastercard/" target="_blank" rel="noopener">visualcapitalist.com</a></li>
-<li id="fn9"><span class="src">J.P. Morgan</span> — Introducing Kinexys (blockchain &amp; digital assets). <a href="https://www.jpmorgan.com/insights/payments/blockchain-digital-assets/introducing-kinexys" target="_blank" rel="noopener">jpmorgan.com</a></li>
-<li id="fn10"><span class="src">Ledger Insights</span> — BCG, ADDX estimate asset tokenization to reach $16 trillion by 2030. <a href="https://www.ledgerinsights.com/bcg-addx-estimate-asset-tokenization-to-reach-16-trillion-by-2030/" target="_blank" rel="noopener">ledgerinsights.com</a></li>
-<li id="fn11"><span class="src">Ledger Insights</span> — McKinsey estimates tokenization will be less than $2 trillion by 2030. <a href="https://www.ledgerinsights.com/mckinsey-estimates-tokenization-will-be-less-than-2-trillion-by-2030/" target="_blank" rel="noopener">ledgerinsights.com</a></li>
-<li id="fn12"><span class="src">Asset Tokenization Report</span> — Forecasts Range from $2T to $30T by 2030 (incl. Standard Chartered). <a href="https://www.assettokenization.com/resources/asset-tokenization-forecasts-range-from-2t-to-30t-by-2030" target="_blank" rel="noopener">assettokenization.com</a></li>
+<li id="fn1"><span class="src">Tomasz Tunguz</span> — Beyond a Trillion: The Token Race (token-consumption analysis). <a href="https://tomtunguz.com/trillion-token-race/" target="_blank" rel="noopener">tomtunguz.com</a></li>
+<li id="fn2"><span class="src">Stephen Smith</span> — Google's Gemini Likely Just Crossed 1 Quadrillion Tokens Processed Per Month. <a href="https://www.smithstephen.com/p/googles-gemini-likely-just-crossed" target="_blank" rel="noopener">smithstephen.com</a></li>
+<li id="fn3"><span class="src">The Register</span> — Google touts its "tokenmaxxing," capex and AI agents at I/O (2026). <a href="https://www.theregister.com/ai-ml/2026/05/19/google_io_ai/" target="_blank" rel="noopener">theregister.com</a></li>
+<li id="fn4"><span class="src">CryptoBriefing</span> — Google processes over 3.2 quadrillion tokens monthly, a 7x increase from last year. <a href="https://cryptobriefing.com/google-3-2-quadrillion-tokens-monthly/" target="_blank" rel="noopener">cryptobriefing.com</a></li>
+<li id="fn5"><span class="src">Andreessen Horowitz (a16z)</span> — Welcome to LLMflation: LLM inference cost is going down fast. <a href="https://a16z.com/llmflation-llm-inference-cost/" target="_blank" rel="noopener">a16z.com</a></li>
+<li id="fn6"><span class="src">Epoch AI</span> — LLM inference prices have fallen rapidly but unequally across tasks. <a href="https://epoch.ai/data-insights/llm-inference-price-trends" target="_blank" rel="noopener">epoch.ai</a></li>
+<li id="fn7"><span class="src">PricePerToken</span> — LLM API Pricing 2026: compare model costs per million tokens. <a href="https://pricepertoken.com/" target="_blank" rel="noopener">pricepertoken.com</a></li>
+<li id="fn8"><span class="src">CloudZero</span> — LLM API Pricing Comparison 2026: every major model, ranked by cost. <a href="https://www.cloudzero.com/blog/llm-api-pricing-comparison/" target="_blank" rel="noopener">cloudzero.com</a></li>
+<li id="fn9"><span class="src">RCR Wireless</span> — Agents, inference and the new token economics: Nvidia pitches the AI future (GTC 2026). <a href="https://www.rcrwireless.com/20260318/ai-infrastructure/agents-inference-token-economics-nvidia-ai" target="_blank" rel="noopener">rcrwireless.com</a></li>
+<li id="fn10"><span class="src">Presidio</span> — How Tokens, Agents, and AI Factories Could Change Everything. <a href="https://www.presidio.com/blogs/how-tokens-agents-and-ai-factories-could-change-everything/" target="_blank" rel="noopener">presidio.com</a></li>
+<li id="fn11"><span class="src">ikangai</span> — The LLM Cost Paradox: How "Cheaper" AI Models Are Breaking Budgets. <a href="https://www.ikangai.com/the-llm-cost-paradox-how-cheaper-ai-models-are-breaking-budgets/" target="_blank" rel="noopener">ikangai.com</a></li>
+<li id="fn12"><span class="src">Google Cloud</span> — Q2 2025 AI Hypercomputer updates (inference infrastructure at scale). <a href="https://cloud.google.com/blog/products/ai-machine-learning/q2-2025-ai-hypercomputer-updates" target="_blank" rel="noopener">cloud.google.com</a></li>
 </ol>
 
-<p class="disclaimer"><strong>Disclaimer.</strong> This note is produced by Polygon Digital for informational and educational purposes only. It is not investment, financial, legal or tax advice and is not a recommendation to buy or sell any asset. Digital assets are volatile and carry risk of total loss. Figures are sourced from third parties as cited and may be out of date. Do your own research and consult a licensed professional before making financial decisions.</p>
+<p class="disclaimer"><strong>Disclaimer.</strong> This note is produced by Polygon Digital for informational and educational purposes only. It is not investment, financial, legal or tax advice and is not a recommendation regarding any company or asset. Token volumes, model prices and forecasts are sourced from third parties as cited, change rapidly, and may be out of date by the time you read this. Always verify against primary sources before relying on these figures.</p>
