@@ -6,18 +6,11 @@
     <description>Market analysis with conviction. We tell you what we think is happening and why it matters.</description>
     <language>en</language>
     <item>
-      <title>Welcome to Polygon Digital</title>
-      <link>https://polygond.com/blog/welcome-to-polygon-digital</link>
-      <guid isPermaLink="true">https://polygond.com/blog/welcome-to-polygon-digital</guid>
-      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
-      <description>What this platform is, what gets published here, and why it exists.</description>
-    </item>
-    <item>
-      <title>Reading the curve: a primer on term structure</title>
-      <link>https://polygond.com/blog/reading-the-curve-a-primer</link>
-      <guid isPermaLink="true">https://polygond.com/blog/reading-the-curve-a-primer</guid>
-      <pubDate>Thu, 04 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Contango, backwardation, and what the shape of a futures curve is actually telling you.</description>
+      <title>The token economy: how tokenization is quietly rewiring finance</title>
+      <link>https://polygond.com/blog/the-token-economy</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-token-economy</guid>
+      <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Tokenization stopped being a pitch-deck slide and became a balance-sheet line. The data, the players actually shipping, and where it goes next.</description>
     </item>
   </channel>
 </rss>
