@@ -141,6 +141,50 @@ The two gauges disagree, and the disagreement *is* the story.
 
 Consumer *surveys* spiked — Michigan's 1-year gauge ran to **4.8% in May** before easing to **4.6% in June**, well above the **3.4%** pre-conflict reading.<sup class="cite"><a href="#fn7">7</a></sup> But survey expectations are notoriously gas-pump-sensitive and backward-looking. The *market-based* measure — bond breakevens, the forward signal that actually moves the Fed — has stayed remarkably stable through the energy shock, nothing like the jump that followed Russia's 2022 invasion of Ukraine.<sup class="cite"><a href="#fn1">1</a></sup> If the bond market is right that this inflation impulse is transitory, the Fed has little reason to keep hiking — which caps how far the dollar runs, and therefore how far oil falls on the currency channel alone.
 
+## The live cross-check: what Polymarket is pricing
+
+Our thesis is fundamentally a read on *probabilities*, so it is worth testing against a venue that quotes probabilities for money. Below is what the Polymarket prediction markets imply right now — one market pulled from each leg of the story, chosen for the deepest liquidity, as of July 10, 2026.<sup class="cite"><a href="#fn10">10</a></sup>
+
+| Prediction market | Live implied odds | What it says |
+| --- | --- | --- |
+| **Fed — July 2026 decision** | **Hold 77.5%** · Hike +25bp 22.9% · Cut ~0.5% | The hiking scare is real but a minority case. The base case is *steady*, not tighter. |
+| **WTI crude — July 2026 range** | **Touch $65 ~36%** vs touch $85 ~14% ($100 just ~2%) | A clear *downside tilt* — a low-$60s print is priced as likelier than a move back to the mid-$80s. |
+| **Strait of Hormuz — normal by Dec 31** | **Yes 64.5%** | Traders lean toward the supply disruption *resolving* — which would hand the wheel to the dollar. |
+
+Read together, the three markets line up with this note's core claim. Traders do *not* expect the Fed to force the dollar sharply higher with aggressive hikes (77.5% hold), they price more downside than upside into crude, and they lean toward Hormuz normalizing. That is the exact combination in which the currency — not the supply shock — becomes the dominant force on oil.
+
+<figure class="fig">
+<p class="fig-title">The oil market's downside tilt, in betting odds</p>
+<p class="fig-sub">Polymarket · implied chance WTI touches a level any time in July 2026</p>
+<svg viewBox="0 0 700 190" role="img" aria-label="Horizontal bar chart of Polymarket implied odds: WTI touches $65 downside about 36 percent, touches $85 upside about 14 percent, touches $100 about 2 percent.">
+  <g font-size="12.5" font-weight="600" fill="currentColor">
+    <text x="210" y="44" text-anchor="end">Touch $65 (down)</text>
+    <text x="210" y="98" text-anchor="end">Touch $85 (up)</text>
+    <text x="210" y="152" text-anchor="end">Touch $100 (up)</text>
+  </g>
+  <!-- scale: 40% = 460px, start x=220 -->
+  <g stroke="currentColor" stroke-opacity="0.12">
+    <line x1="220" y1="20" x2="220" y2="162"/>
+    <line x1="450" y1="20" x2="450" y2="162"/>
+    <line x1="680" y1="20" x2="680" y2="162"/>
+  </g>
+  <rect x="220" y="28" width="414" height="30" fill="currentColor" fill-opacity="0.85"/>
+  <text x="644" y="49" font-size="13" font-weight="600" fill="currentColor">~36%</text>
+  <rect x="220" y="82" width="161" height="30" fill="currentColor" fill-opacity="0.5"/>
+  <text x="391" y="103" font-size="13" font-weight="600" fill="currentColor">~14%</text>
+  <rect x="220" y="136" width="23" height="30" fill="currentColor" fill-opacity="0.35"/>
+  <text x="253" y="157" font-size="13" font-weight="600" fill="currentColor">~2%</text>
+  <g font-size="10.5" fill="currentColor" fill-opacity="0.5">
+    <text x="220" y="182" text-anchor="middle">0%</text>
+    <text x="450" y="182" text-anchor="middle">20%</text>
+    <text x="680" y="182" text-anchor="middle">40%</text>
+  </g>
+</svg>
+<figcaption>Source: Polymarket event "What will WTI Crude Oil hit in July 2026?" (~$2.5M volume), live odds as of Jul 10, 2026.<sup class="cite"><a href="#fn10">10</a></sup> These are "touch any time in July" contracts, not month-end settlement — so they overstate the odds of a brief spike or dip versus where oil actually closes.</figcaption>
+</figure>
+
+Two honest qualifiers. These are *live* odds that move by the hour, and prediction-market depth here is modest (crude ~$2.5M, Hormuz ~$4.8M, the Fed market ~$49M). Treat them as a real-money sentiment cross-check — useful precisely because it agrees with the fundamental read — not as proof.
+
 ## Our call
 
 If you take one position from this note, take this: **when correlated selling hits oil, gold, silver, and equities at once, your first suspect should be the dollar — and the dollar's next move belongs to the Fed, which belongs to inflation expectations.** Our read —
@@ -153,7 +197,7 @@ If you take one position from this note, take this: **when correlated selling hi
 
 ## The honest caveats
 
-**This is one angle, not the whole board.** Supply, OPEC+ policy, and demand still matter — the dollar is a powerful lens, not a monocausal law. **Correlation is not destiny:** the USD–oil inverse relationship has weakened structurally since the US became a net oil exporter, so the historic tightness may not fully hold. **Survey ≠ market** on inflation expectations, and we lean on the market read — but that is a judgment call. **The drawdown figures are approximate**, drawn from the source video's framing, and returns depend heavily on the exact window. And **forecasts are forecasts** — the year-end DXY and 2027 Brent numbers are house views that will move.
+**This is one angle, not the whole board.** Supply, OPEC+ policy, and demand still matter — the dollar is a powerful lens, not a monocausal law. **Correlation is not destiny:** the USD–oil inverse relationship has weakened structurally since the US became a net oil exporter, so the historic tightness may not fully hold. **Survey ≠ market** on inflation expectations, and we lean on the market read — but that is a judgment call. **The drawdown figures are approximate**, drawn from the source video's framing, and returns depend heavily on the exact window. **The prediction-market odds are live and thin** — they move by the hour, some are "touch" rather than "settle" contracts, and modest liquidity can distort them. And **forecasts are forecasts** — the year-end DXY and 2027 Brent numbers are house views that will move.
 
 ## The bottom line
 
@@ -182,6 +226,7 @@ The headlines are watching tankers in the Strait of Hormuz. The more powerful va
 <li id="fn7"><span class="src">University of Michigan Surveys of Consumers (via TradingView)</span> — 1-year inflation expectations 4.6% (June), 4.8% (May), 3.4% (pre-conflict February). <a href="https://www.tradingview.com/news/te_news:558747:0-us-1-year-inflation-outlook-softens-in-june/" target="_blank" rel="noopener">tradingview.com</a></li>
 <li id="fn8"><span class="src">Bloomberg Professional Services</span> — Midyear commodity review 2026: BCOM +14% in H1, energy +38.7%, followed by a Q2 consolidation. <a href="https://www.bloomberg.com/professional/insights/markets/midyear-commodity-review-2026-2/" target="_blank" rel="noopener">bloomberg.com</a></li>
 <li id="fn9"><span class="src">European Central Bank / Capital.com</span> — The link between oil prices and the US dollar; oil priced and settled predominantly in USD and the currency-repricing mechanism. <a href="https://www.ecb.europa.eu/press/economic-bulletin/focus/2024/html/ecb.ebbox202407_02~5ce155d504.en.html" target="_blank" rel="noopener">ecb.europa.eu</a></li>
+<li id="fn10"><span class="src">Polymarket</span> — Live prediction-market odds via the public Gamma API: "Fed Decision in July?", "What will WTI Crude Oil hit in July 2026?", and "Strait of Hormuz traffic returns to normal by December 31?" Retrieved Jul 10, 2026. <a href="https://polymarket.com/" target="_blank" rel="noopener">polymarket.com</a></li>
 </ol>
 
 <p class="disclaimer"><strong>Disclaimer.</strong> This note is produced by Polygon Digital for informational and educational purposes only. It is not investment, financial, legal or tax advice and is not a recommendation regarding any security, commodity, or currency. Views are our own opinion as of the publication date and draw in part on third-party commentary (including the cited Bravos Research video) and data that are self-reported, approximate, or forecasted, change rapidly, and may be revised. Markets are uncertain and the relationships described here can and do break down. Verify against primary sources and consult a qualified professional before making any investment decision.</p>
