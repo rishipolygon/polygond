@@ -63,7 +63,7 @@ To see why a $13B facility barely moves Meta's needle, look at the fleet it belo
   <rect x="198" y="90" width="94" height="32" fill="currentColor" fill-opacity="0.9"/>
   <text x="302" y="111" font-size="13" font-weight="600" fill="currentColor">1 GW</text>
   <rect x="198" y="150" width="470" height="32" fill="currentColor" fill-opacity="0.45"/>
-  <text x="620" y="171" font-size="13" font-weight="600" fill="#fff">~5 GW</text>
+  <text x="636" y="171" font-size="13" font-weight="600" fill="currentColor">~5 GW</text>
   <g font-size="10.5" fill="currentColor" fill-opacity="0.5">
     <text x="198" y="205" text-anchor="middle">0</text>
     <text x="386" y="205" text-anchor="middle">2 GW</text>
