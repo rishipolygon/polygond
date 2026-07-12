@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { posts, formatDate } from '../lib/posts.js'
+import Cover from '../lib/covers.jsx'
 
 export default function Blog() {
   if (posts.length === 0) {
@@ -35,6 +36,9 @@ export default function Blog() {
             className="post-row"
           >
             <span className="post-num">{String(i + 1).padStart(2, '0')}</span>
+            <span className="post-cover" aria-hidden="true">
+              <Cover slug={post.slug} />
+            </span>
             <div className="post-row-main">
               <h2>{post.title}</h2>
               {post.summary && <p>{post.summary}</p>}

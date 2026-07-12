@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { marked } from 'marked'
 import { posts, formatDate } from '../lib/posts.js'
+import Cover from '../lib/covers.jsx'
 
 marked.setOptions({ gfm: true })
 
@@ -16,6 +17,10 @@ export default function Post() {
   return (
     <section className="page page-narrow">
       <Link to="/blog" className="back-link">← All notes</Link>
+
+      <div className="article-cover" aria-hidden="true">
+        <Cover slug={post.slug} />
+      </div>
 
       <header className="article-head">
         <span className="kicker">
