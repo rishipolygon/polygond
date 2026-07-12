@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-rss.mjs && vite build",
+    "build": "node scripts/build-rss.mjs && vite build && node scripts/build-og-pages.mjs",
     "preview": "vite preview",
     "market": "node scripts/fetch-market.mjs",
     "avdata": "node scripts/fetch-av.mjs",
-    "rss": "node scripts/build-rss.mjs"
+    "rss": "node scripts/build-rss.mjs",
+    "og": "node scripts/build-og-images.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.5",
@@ -21,6 +22,7 @@
     "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@vitejs/plugin-react": "^5.0.0",
     "vite": "^7.0.0"
   }
