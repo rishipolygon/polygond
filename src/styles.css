@@ -1158,6 +1158,97 @@ h1, h2, h3 {
   border: 1px solid var(--line);
 }
 
+/* ——— Share bar ——— */
+.share {
+  margin-top: 3.5rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.share > .kicker {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.share-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.share-btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.share-btn-primary:hover {
+  opacity: 0.85;
+}
+
+.share-story {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+}
+
+.share-story-thumb {
+  flex: 0 0 auto;
+  width: 99px;
+  height: 176px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+
+.share-story-copy h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.share-story-copy p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.9rem;
+  max-width: 40ch;
+}
+
+@media (max-width: 560px) {
+  .share-story {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ——— Post prev/next ——— */
 
 .post-nav {

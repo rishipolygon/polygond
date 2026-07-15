@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { marked } from 'marked'
 import { posts, formatDate } from '../lib/posts.js'
 import Cover from '../lib/covers.jsx'
+import Share from '../components/Share.jsx'
 
 marked.setOptions({ gfm: true })
 
@@ -34,6 +35,8 @@ export default function Post() {
         className="article"
         dangerouslySetInnerHTML={{ __html: marked.parse(post.body) }}
       />
+
+      <Share slug={post.slug} title={post.title} />
 
       <nav className="post-nav">
         {older ? (

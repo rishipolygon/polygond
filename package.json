@@ -10,7 +10,9 @@
     "market": "node scripts/fetch-market.mjs",
     "avdata": "node scripts/fetch-av.mjs",
     "rss": "node scripts/build-rss.mjs",
-    "og": "node scripts/build-og-images.mjs"
+    "og": "node scripts/build-og-images.mjs",
+    "stories": "node scripts/build-story-cards.mjs",
+    "cards": "node scripts/build-og-images.mjs && node scripts/build-story-cards.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.5",
