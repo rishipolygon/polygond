@@ -4,16 +4,9 @@
    Sora (display) · Manrope (text) · IBM Plex Mono (labels)
    ———————————————————————————————————————————————— */
 
+/* Dark is the default on every device — applied even before JS runs, so the
+   site never opens light. Light is opt-in via the toggle (data-theme='light'). */
 :root,
-:root[data-theme='light'] {
-  --bg: #f5f4f1;
-  --fg: #0b0c0e;
-  --muted: #6f6e69;
-  --line: rgba(11, 12, 14, 0.09);
-  --line-strong: rgba(11, 12, 14, 0.35);
-  --nav-bg: rgba(245, 244, 241, 0.85);
-}
-
 :root[data-theme='dark'] {
   --bg: #0b0c0e;
   --fg: #f5f4f1;
@@ -21,6 +14,17 @@
   --line: rgba(245, 244, 241, 0.11);
   --line-strong: rgba(245, 244, 241, 0.4);
   --nav-bg: rgba(11, 12, 14, 0.85);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f5f4f1;
+  --fg: #0b0c0e;
+  --muted: #6f6e69;
+  --line: rgba(11, 12, 14, 0.09);
+  --line-strong: rgba(11, 12, 14, 0.35);
+  --nav-bg: rgba(245, 244, 241, 0.85);
+  color-scheme: light;
 }
 
 * {
