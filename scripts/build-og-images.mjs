@@ -7,7 +7,7 @@
 // with the real Sora / IBM Plex Mono type (LinkedIn can't render inline SVG).
 
 import { Resvg } from '@resvg/resvg-js'
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -174,10 +174,43 @@ function artGigawatt() {
     <line x1="712" y1="${baseY}" x2="1124" y2="${baseY}" stroke="${INK}" stroke-opacity="0.28" stroke-width="1.5"/>`
 }
 
+// ——— DeepSeek card: composite the OFFICIAL logo the user supplies ———
+// Drop the real brand asset at scripts/og-assets/deepseek-logo.png (transparent
+// PNG preferred) or .svg. We only embed a file that exists on disk — we never
+// trace or recreate the trademarked mark. If it's absent, the card falls back
+// to the default motif so the build never breaks.
+const assetDir = join(__dirname, 'og-assets')
+const DEEPSEEK_BLUE = '#4D6BFE'
+
+// Composite the OFFICIAL DeepSeek mark from scripts/og-assets/deepseek-logo.svg
+// (a single-path 24×24 brand glyph). We extract its vector path and draw it
+// NATIVELY into the card so resvg renders it crisply — no raster embedding.
+// If the asset is missing we fall back to the default motif so the build holds.
+function artDeepseek() {
+  const svgPath = join(assetDir, 'deepseek-logo.svg')
+  if (!existsSync(svgPath)) {
+    console.warn('  ! no deepseek-logo.svg in scripts/og-assets — using default motif')
+    return artDefault()
+  }
+  const d = (/\sd="([^"]+)"/.exec(readFileSync(svgPath, 'utf8')) || [])[1]
+  if (!d) {
+    console.warn('  ! deepseek-logo.svg has no <path d> — using default motif')
+    return artDefault()
+  }
+  const cx = PLATE.x + PLATE.w / 2
+  const cy = PLATE.y + PLATE.h / 2
+  const size = Math.min(PLATE.w, PLATE.h) - 96 // contain within the plate
+  const scale = size / 24 // brand glyph is a 24-unit square
+  const tx = cx - (24 * scale) / 2
+  const ty = cy - (24 * scale) / 2
+  return `<g transform="translate(${tx} ${ty}) scale(${scale})"><path d="${d}" fill="${DEEPSEEK_BLUE}"/></g>`
+}
+
 const ART = {
   'the-token-economy': artTokenEconomy,
   'the-measuring-stick': artMeasuringStick,
   'the-gigawatt-land-grab': artGigawatt,
+  'the-deepseek-discount': artDeepseek,
 }
 
 function artDefault() {

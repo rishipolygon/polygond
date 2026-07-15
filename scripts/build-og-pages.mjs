@@ -73,7 +73,7 @@ for (const { slug, meta } of posts) {
 
   let html = template
     .replace(/<!-- og:start -->[\s\S]*?<!-- og:end -->/, ogBlock({ title, description, url, image }))
-    .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)} — Polygon Digital</title>`)
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)} · Polygon Digital</title>`)
     .replace(
       /<meta name="description" content="[\s\S]*?" \/>/,
       `<meta name="description" content="${esc(description)}" />`

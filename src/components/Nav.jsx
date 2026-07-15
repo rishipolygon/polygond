@@ -4,7 +4,7 @@ import Mark from './Mark.jsx'
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(
-    () => document.documentElement.dataset.theme || 'light',
+    () => document.documentElement.dataset.theme || 'dark',
   )
 
   useEffect(() => {

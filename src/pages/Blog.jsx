@@ -24,7 +24,7 @@ export default function Blog() {
         <span className="kicker">RESEARCH NOTES</span>
         <h1>The blog</h1>
         <p className="page-lede">
-          Breakdowns, deep dives, and research notes — told with conviction.
+          Breakdowns, deep dives, and research notes, told with conviction.
         </p>
       </header>
 

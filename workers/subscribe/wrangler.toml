@@ -1,0 +1,12 @@
+name = "polygond-subscribe"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# The repo whose Action gets triggered. Public value — safe to commit.
+[vars]
+GH_REPO = "rishipolygon/polygond"
+# Comma-separated origins allowed to call this Worker.
+ALLOWED_ORIGINS = "https://polygond.com,https://www.polygond.com"
+
+# GH_TOKEN is a SECRET — never put it here. Set it with:
+#   wrangler secret put GH_TOKEN

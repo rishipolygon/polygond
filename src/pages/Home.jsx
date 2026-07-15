@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import Ticker from '../components/Ticker.jsx'
 import Subscribe from '../components/Subscribe.jsx'
+import { posts, formatDate } from '../lib/posts.js'
+import Cover from '../lib/covers.jsx'
 
 // Striking landing: the hexagon mark, one line, two doors, a ticker.
 // The outer hexagon draws itself on load and tilts gently toward the cursor.
@@ -74,7 +76,7 @@ export default function Home() {
       </h1>
 
       <p className="hero-sub">
-        We tell you what we think is happening — and why it matters.
+        We tell you what we think is happening, and why it matters.
       </p>
 
       <div className="hero-links">
@@ -88,6 +90,36 @@ export default function Home() {
 
       <Ticker />
     </section>
+
+    {posts.length > 0 && (
+      <section className="home-latest">
+        <div className="home-latest-head">
+          <span className="kicker">LATEST NOTES</span>
+          <Link to="/blog" className="home-latest-all">
+            All notes <span className="arrow">→</span>
+          </Link>
+        </div>
+        <div className="post-list">
+          {posts.slice(0, 3).map((post, i) => (
+            <Link key={post.slug} to={`/blog/${post.slug}`} className="post-row">
+              <span className="post-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="post-cover" aria-hidden="true">
+                <Cover slug={post.slug} />
+              </span>
+              <div className="post-row-main">
+                <h2>{post.title}</h2>
+                {post.summary && <p>{post.summary}</p>}
+              </div>
+              <span className="post-row-meta">
+                <span>{formatDate(post.date)}</span>
+                {post.tags.length > 0 && <span>{post.tags[0]}</span>}
+              </span>
+              <span className="post-arrow" aria-hidden="true">→</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+    )}
 
     <Subscribe />
     </>

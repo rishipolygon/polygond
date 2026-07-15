@@ -7,16 +7,16 @@ import { useState, useEffect } from 'react'
 //   4. The tape   — sentiment-filterable headlines, scrollable
 
 function fmtPrice(p) {
-  if (p == null) return '—'
+  if (p == null) return '–'
   if (p >= 1000) return p.toLocaleString('en-US', { maximumFractionDigits: 0 })
   if (p >= 1) return p.toFixed(2)
   return p.toFixed(4)
 }
 
-const fmtChg = (c) => (c == null ? '—' : `${c < 0 ? '−' : '+'}${Math.abs(c).toFixed(2)}%`)
+const fmtChg = (c) => (c == null ? '–' : `${c < 0 ? '−' : '+'}${Math.abs(c).toFixed(2)}%`)
 
 function fmtVolume(v) {
-  if (v == null) return '—'
+  if (v == null) return '–'
   if (v >= 1e9) return (v / 1e9).toFixed(1) + 'B'
   if (v >= 1e6) return (v / 1e6).toFixed(1) + 'M'
   if (v >= 1e3) return (v / 1e3).toFixed(0) + 'K'
@@ -190,7 +190,7 @@ export default function Markets() {
         <header className="page-head">
           <span className="kicker">MARKETS</span>
           <h1>Market dashboard</h1>
-          <p className="page-lede">Dashboard data isn't available right now — check back shortly.</p>
+          <p className="page-lede">Dashboard data isn't available right now. Check back shortly.</p>
         </header>
       </section>
     )
@@ -251,7 +251,7 @@ export default function Markets() {
         <span className="kicker">MARKETS · AS OF {updatedLabel}</span>
         <h1>Market dashboard</h1>
         <p className="page-lede">
-          Welcome to the Polygon Index — the day on one page. Where markets
+          Welcome to the Polygon Index, the day on one page. Where markets
           sit, what rates are saying, what's moving, and what the tape is
           trading on. Click any card to chart it.
         </p>
