@@ -6,25 +6,46 @@
     <description>Market analysis with conviction. We tell you what we think is happening and why it matters.</description>
     <language>en</language>
     <item>
+      <title>The Kimi shock: China's largest open model reprices the AI trade</title>
+      <link>https://polygond.com/blog/the-kimi-shock</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-kimi-shock</guid>
+      <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Moonshot AI released Kimi K3 this month, a 2.8 trillion parameter open-weight model that lands in the top four on the public leaderboards while pricing at a fraction of the closed frontier. Chip and AI stocks sold off within hours in what traders called a second DeepSeek moment. Here is our read on what actually changed, and why the selloff was never really about chips.</description>
+    </item>
+    <item>
+      <title>The gas behind the boom: how data centers and LNG are fighting for the same molecule</title>
+      <link>https://polygond.com/blog/the-gas-behind-the-boom</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-gas-behind-the-boom</guid>
+      <pubDate>Wed, 15 Jul 2026 12:00:00 GMT</pubDate>
+      <description>AI data centers cannot wait five years for a grid connection, so hyperscalers are building their own gas power plants on site. US data center gas demand is heading from near zero to somewhere between 3 and 6 billion cubic feet a day by 2030. At the same time LNG exporters are bidding for the same supply. Here is our read on how much gas the boom burns, and who gets paid to supply it.</description>
+    </item>
+    <item>
+      <title>The DeepSeek discount: China's AI is closing the gap, and it costs a tenth as much</title>
+      <link>https://polygond.com/blog/the-deepseek-discount</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-deepseek-discount</guid>
+      <pubDate>Tue, 14 Jul 2026 12:00:00 GMT</pubDate>
+      <description>DeepSeek is preparing an IPO at a rumoured ~$71B valuation, and China's models now land within single digits of the Western frontier while charging 5–30x less. The interesting question for a North American reader is not whether to buy the stock. It is whether that price gap is a real arbitrage or a trap. Here is our read.</description>
+    </item>
+    <item>
       <title>The gigawatt land grab: why Meta went to Alberta, and what it costs</title>
       <link>https://polygond.com/blog/the-gigawatt-land-grab</link>
       <guid isPermaLink="true">https://polygond.com/blog/the-gigawatt-land-grab</guid>
       <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
-      <description>Meta just broke ground on a CAD $13B, 1-gigawatt AI data centre in rural Alberta — its first in Canada and 33rd worldwide. Strip away the ribbon-cutting and it is a case study in the real bottleneck of the AI boom: not chips, not talent, but power, land, and the political will to permit both. Here is our read on who wins.</description>
+      <description>Meta just broke ground on a CAD $13B, 1-gigawatt AI data centre in rural Alberta, its first in Canada and 33rd worldwide. Strip away the ribbon-cutting and it is a case study in the real bottleneck of the AI boom: not chips, not talent, but power, land, and the political will to permit both. Here is our read on who wins.</description>
     </item>
     <item>
       <title>The measuring stick: why the dollar, not the Strait of Hormuz, may be pulling oil down</title>
       <link>https://polygond.com/blog/the-measuring-stick</link>
       <guid isPermaLink="true">https://polygond.com/blog/the-measuring-stick</guid>
       <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
-      <description>Oil has round-tripped its entire war spike even though Hormuz transit is still choked — and gold, silver, Bitcoin, and megacap stocks fell right alongside it. One underappreciated variable ties them together: a strengthening US dollar. Here is the case for watching the measuring stick, not the barrel.</description>
+      <description>Oil has round-tripped its entire war spike even though Hormuz transit is still choked, and gold, silver, Bitcoin, and megacap stocks fell right alongside it. One underappreciated variable ties them together: a strengthening US dollar. Here is the case for watching the measuring stick, not the barrel.</description>
     </item>
     <item>
       <title>The token paradox: AI's economy is exploding, deflating, and barely profitable</title>
       <link>https://polygond.com/blog/the-token-economy</link>
       <guid isPermaLink="true">https://polygond.com/blog/the-token-economy</guid>
       <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Token volumes are up hundreds of times over, the price of intelligence is collapsing ~10x a year, growth is already decelerating — and almost no one selling tokens is making money. Here is who actually wins.</description>
+      <description>Token volumes are up hundreds of times over, the price of intelligence is collapsing ~10x a year, growth is already decelerating, and almost no one selling tokens is making money. Here is who actually wins.</description>
     </item>
   </channel>
 </rss>

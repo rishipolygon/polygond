@@ -248,6 +248,42 @@ function DeepseekDiscount() {
   )
 }
 
+// ——— The Kimi shock: the official Moonshot AI mark over a price-gap motif ———
+// The logo path is the genuine Moonshot AI brand mark (Simple Icons, 24×24
+// viewBox). It is monochrome by design, so we draw it in `currentColor` and it
+// inherits the ink/paper theme exactly like the charts. Behind it, two bars
+// restate the article: a tall "frontier price" vs a short "Kimi price" — top-four
+// capability at a fraction of the cost, with the weights open.
+const MOONSHOT_LOGO_PATH =
+  'm1.053 16.91 9.538 2.55a21 20.981 0 0 0 .06 2.031l5.956 1.592a12 11.99 0 0 1-15.554-6.172m-1.02-5.79 11.352 3.035a21 20.981 0 0 0-.469 2.01l10.817 2.89a12 11.99 0 0 1-1.845 2.004L.658 15.918a12 11.99 0 0 1-.625-4.796m1.593-5.146L13.573 9.17a21 20.981 0 0 0-1.01 1.874l11.297 3.02a21 20.981 0 0 1-.67 2.362l-11.55-3.087L.125 10.26a12 11.99 0 0 1 1.499-4.285ZM6.067 1.58l11.285 3.016a21 20.981 0 0 0-1.688 1.719l7.824 2.091a21 20.981 0 0 1 .513 2.664L2.107 5.218a12 11.99 0 0 1 3.96-3.638M21.68 4.866 7.222 1.003A12 11.99 0 0 1 21.68 4.866'
+
+function KimiShock() {
+  const base = 372
+  return (
+    <Frame>
+      {/* faint field lines */}
+      <g stroke="currentColor" strokeOpacity="0.1">
+        <line x1="84" y1="120" x2="716" y2="120" />
+        <line x1="84" y1="246" x2="716" y2="246" />
+        <line x1="84" y1="372" x2="716" y2="372" />
+      </g>
+      {/* the price gap: closed frontier vs Kimi K3 */}
+      <rect x="112" y={base - 300} width="86" height="300" fill="currentColor" fillOpacity="0.16" />
+      <rect x="238" y={base - 150} width="86" height="150" fill="currentColor" fillOpacity="0.5" />
+      <text x="155" y="42" textAnchor="middle" fill="currentColor" fillOpacity="0.6" style={mono}>
+        FRONTIER
+      </text>
+      <text x="281" y="42" textAnchor="middle" fill="currentColor" fillOpacity="0.6" style={mono}>
+        OPEN · ½ PRICE
+      </text>
+      {/* the official Moonshot AI mark, monochrome, over the plate */}
+      <g transform="translate(452 96) scale(10.5)">
+        <path d={MOONSHOT_LOGO_PATH} fill="currentColor" fillOpacity="0.9" />
+      </g>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -264,6 +300,7 @@ const covers = {
   'the-measuring-stick': MeasuringStick,
   'the-gigawatt-land-grab': GigawattLandGrab,
   'the-deepseek-discount': DeepseekDiscount,
+  'the-kimi-shock': KimiShock,
 }
 
 export function hasCover(slug) {

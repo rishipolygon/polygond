@@ -206,11 +206,36 @@ function artDeepseek() {
   return `<g transform="translate(${tx} ${ty}) scale(${scale})"><path d="${d}" fill="${DEEPSEEK_BLUE}"/></g>`
 }
 
+// Composite the OFFICIAL Moonshot AI mark from scripts/og-assets/moonshot-logo.svg
+// (a single-path 24×24 brand glyph). The mark is monochrome, so we render it in
+// ink natively into the card. Falls back to the default motif if the asset is
+// missing so the build never breaks.
+function artMoonshot() {
+  const svgPath = join(assetDir, 'moonshot-logo.svg')
+  if (!existsSync(svgPath)) {
+    console.warn('  ! no moonshot-logo.svg in scripts/og-assets — using default motif')
+    return artDefault()
+  }
+  const d = (/\sd="([^"]+)"/.exec(readFileSync(svgPath, 'utf8')) || [])[1]
+  if (!d) {
+    console.warn('  ! moonshot-logo.svg has no <path d> — using default motif')
+    return artDefault()
+  }
+  const cx = PLATE.x + PLATE.w / 2
+  const cy = PLATE.y + PLATE.h / 2
+  const size = Math.min(PLATE.w, PLATE.h) - 116 // contain within the plate
+  const scale = size / 24 // brand glyph is a 24-unit square
+  const tx = cx - (24 * scale) / 2
+  const ty = cy - (24 * scale) / 2
+  return `<g transform="translate(${tx} ${ty}) scale(${scale})"><path d="${d}" fill="${INK}"/></g>`
+}
+
 const ART = {
   'the-token-economy': artTokenEconomy,
   'the-measuring-stick': artMeasuringStick,
   'the-gigawatt-land-grab': artGigawatt,
   'the-deepseek-discount': artDeepseek,
+  'the-kimi-shock': artMoonshot,
 }
 
 function artDefault() {
