@@ -284,6 +284,70 @@ function KimiShock() {
   )
 }
 
+// ——— The barrel of intelligence: the price ladder collapsing into an open barrel ——
+// Left: the hundredfold spread Chamath drew on air, from the $56 barrel down to the
+// 50 cent one. Right: the barrel itself, drawn open at the top, because the real
+// deflation arrived as published weights rather than as a price cut.
+function BarrelOfIntelligence() {
+  const base = 372
+  const bars = [
+    { h: 300, o: 0.9 },
+    { h: 140, o: 0.72 },
+    { h: 30, o: 0.56 },
+    { h: 16, o: 0.46 },
+    { h: 10, o: 0.4 },
+    { h: 6, o: 0.34 },
+  ]
+  const bw = 44
+  const gap = 22
+  const x0 = 84
+  return (
+    <Frame>
+      {/* faint field lines */}
+      <g stroke="currentColor" strokeOpacity="0.1">
+        <line x1="84" y1="96" x2="716" y2="96" />
+        <line x1="84" y1="234" x2="716" y2="234" />
+        <line x1="84" y1="372" x2="716" y2="372" />
+      </g>
+      {/* the price ladder, collapsing left to right */}
+      {bars.map((b, i) => (
+        <rect
+          key={i}
+          x={x0 + i * (bw + gap)}
+          y={base - b.h}
+          width={bw}
+          height={b.h}
+          fill="currentColor"
+          fillOpacity={b.o}
+        />
+      ))}
+      {/* the barrel, open at the top */}
+      <g stroke="currentColor" fill="none" strokeWidth="2.4">
+        <ellipse cx="560" cy="112" rx="75" ry="22" strokeOpacity="0.9" />
+        <path d="M485,112 L485,338" strokeOpacity="0.9" />
+        <path d="M635,112 L635,338" strokeOpacity="0.9" />
+        <path d="M485,338 A 75 22 0 0 0 635,338" strokeOpacity="0.9" />
+        {/* hoops */}
+        <path d="M485,178 A 75 22 0 0 0 635,178" strokeOpacity="0.45" strokeWidth="1.8" />
+        <path d="M485,272 A 75 22 0 0 0 635,272" strokeOpacity="0.45" strokeWidth="1.8" />
+      </g>
+      {/* the fill: what is actually in the barrel */}
+      <path
+        d="M485,238 L485,338 A 75 22 0 0 0 635,338 L635,238 A 75 22 0 0 1 485,238 Z"
+        fill="currentColor"
+        fillOpacity="0.22"
+      />
+      <ellipse cx="560" cy="238" rx="75" ry="22" fill="currentColor" fillOpacity="0.3" />
+      <text x="84" y="42" fill="currentColor" fillOpacity="0.62" style={mono}>
+        $56 ▼ $0.50
+      </text>
+      <text x="716" y="42" textAnchor="end" fill="currentColor" fillOpacity="0.62" style={mono}>
+        1 BARREL = 1M TOKENS
+      </text>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -301,6 +365,7 @@ const covers = {
   'the-gigawatt-land-grab': GigawattLandGrab,
   'the-deepseek-discount': DeepseekDiscount,
   'the-kimi-shock': KimiShock,
+  'the-barrel-of-intelligence': BarrelOfIntelligence,
 }
 
 export function hasCover(slug) {

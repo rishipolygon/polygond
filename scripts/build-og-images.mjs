@@ -230,12 +230,47 @@ function artMoonshot() {
   return `<g transform="translate(${tx} ${ty}) scale(${scale})"><path d="${d}" fill="${INK}"/></g>`
 }
 
+// The barrel of intelligence: the price ladder collapsing into an open barrel.
+function artBarrel() {
+  const base = 440
+  const bars = [
+    { h: 230, o: 0.9 },
+    { h: 108, o: 0.72 },
+    { h: 24, o: 0.56 },
+    { h: 13, o: 0.46 },
+    { h: 8, o: 0.38 },
+  ]
+  const bw = 30
+  const gap = 14
+  const x0 = 726
+  let s = ''
+  ;[230, 335, 440].forEach((y) => {
+    s += `<line x1="722" y1="${y}" x2="1124" y2="${y}" stroke="${INK}" stroke-opacity="0.1"/>`
+  })
+  bars.forEach((b, i) => {
+    s += `<rect x="${x0 + i * (bw + gap)}" y="${base - b.h}" width="${bw}" height="${b.h}" fill="${INK}" fill-opacity="${b.o}"/>`
+  })
+  // the barrel, open at the top, with a fill level
+  s += `<path d="M985,330 L985,424 A 55 16 0 0 0 1095,424 L1095,330 A 55 16 0 0 1 985,330 Z" fill="${INK}" fill-opacity="0.2"/>`
+  s += `<ellipse cx="1040" cy="330" rx="55" ry="16" fill="${INK}" fill-opacity="0.28"/>`
+  s += `<g stroke="${INK}" fill="none" stroke-width="2.4">
+      <ellipse cx="1040" cy="216" rx="55" ry="16" stroke-opacity="0.9"/>
+      <line x1="985" y1="216" x2="985" y2="424" stroke-opacity="0.9"/>
+      <line x1="1095" y1="216" x2="1095" y2="424" stroke-opacity="0.9"/>
+      <path d="M985,424 A 55 16 0 0 0 1095,424" stroke-opacity="0.9"/>
+      <path d="M985,268 A 55 16 0 0 0 1095,268" stroke-opacity="0.45" stroke-width="1.8"/>
+      <path d="M985,356 A 55 16 0 0 0 1095,356" stroke-opacity="0.45" stroke-width="1.8"/>
+    </g>`
+  return s
+}
+
 const ART = {
   'the-token-economy': artTokenEconomy,
   'the-measuring-stick': artMeasuringStick,
   'the-gigawatt-land-grab': artGigawatt,
   'the-deepseek-discount': artDeepseek,
   'the-kimi-shock': artMoonshot,
+  'the-barrel-of-intelligence': artBarrel,
 }
 
 function artDefault() {
