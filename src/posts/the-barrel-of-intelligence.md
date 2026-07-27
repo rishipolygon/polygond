@@ -1,19 +1,36 @@
 ---
-title: "The barrel of intelligence: Chamath priced AI like crude, then the cheap barrel raised its price"
+title: "Kimi K3 got good, then got expensive: what the largest open model ever tells us about the price of intelligence"
 date: 2026-07-27
-summary: On CNBC, Chamath Palihapitiya priced a million tokens as a barrel of intelligence and showed a spread running from 50 cents to 56 dollars. Two days later Moonshot released Kimi K3, tripled its price to match Claude Sonnet, and landed fourth in the world. Today the weights went public. Here is why the deflation he predicted is real but arriving from a direction nobody priced, and why crude grades matter more than crude prices.
+summary: Moonshot released Kimi K3 on July 16, published the weights this morning, and in between did something nobody expected from a Chinese lab. It tripled its price. The model placed fourth of 189 on the independent intelligence index and now lists at Claude Sonnet rates. Here is what that says about what a unit of intelligence is actually worth, why the deflation everyone is waiting for arrives through downloads rather than rate cards, and why the grade of the barrel matters more than the price of it.
 tags: ai, tokens, markets
 ---
 
-<p class="article-dek">On July 14, Chamath Palihapitiya did something useful on CNBC. He stopped describing AI as a technology and started pricing it as a commodity. One barrel of intelligence, he said, is one million tokens. Crude was near $80. And the barrel of intelligence ran from 50 cents to 56 dollars depending on whose pump you pulled up to.</p>
+<p class="article-dek">Kimi K3 shipped on July 16 as the largest open-weight model ever built: 2.8 trillion parameters, a million-token context window, fourth of 189 models on the independent intelligence index. This morning Moonshot published the weights. Somewhere between those two events the model did something no one had it priced for. It got more expensive.</p>
 
-<p class="lead">Two days later Moonshot AI released Kimi K3 and the 50 cent barrel raised its price to three dollars. That sounds like a contradiction. It is actually the confirmation. Our read: the rationalization Chamath called for is coming, but it is not arriving as a price war between labs. It arrives as a file on Hugging Face, which landed this morning. And once you follow the metaphor all the way down, the interesting question stops being what a barrel costs and becomes what grade of crude you just bought. We wrote the market side of this release in <a href="/blog/the-kimi-shock">the Kimi shock</a>; this is the pricing side, and it extends the argument we made in <a href="/blog/the-token-economy">the token paradox</a>.</p>
+<p class="lead">Our thesis in one sentence: K3 is the moment near-frontier capability stopped being a discount product, and the price move tells you more about where this market is heading than the benchmark table does. We covered the market reaction to this release in <a href="/blog/the-kimi-shock">the Kimi shock</a>. This note is about the number on the rate card, what it says about the cost of a unit of intelligence, and the thing almost nobody is pricing: that not all units are the same grade. It extends the argument we made in <a href="/blog/the-token-economy">the token paradox</a>.</p>
 
-## The price board
+## What K3 actually posted
 
-The framing is worth quoting because the numbers do the work. "You can buy it from OpenAI for 26 bucks. Anthropic's latest model costs you 56 bucks." Then the other side of the board: "Elon is selling you a barrel of intelligence for a buck. Zuck is about to sell it to you for a buck 50. Demis and Sundar are trying to sell it to you for a dollar. The Chinese will sell it to you for $0.50."<sup class="cite"><a href="#fn1">1</a></sup><sup class="cite"><a href="#fn2">2</a></sup>
+The benchmark sheet is genuinely strong, and strong in the places that matter commercially rather than academically.
 
-A hundredfold spread on what is nominally the same product. No commodity market on earth sustains that.
+K3 sits **fourth of 189 models** on the Artificial Analysis Intelligence Index, the highest any open-weight model has ever placed, trailing only Claude Fable 5 and two GPT-5.6 Sol variants. It took **first place on LMArena's Frontend Code arena** with an Elo of 1,679, beating Claude Fable 5 in 76% of blind head-to-head matchups judged by human developers. Its predecessor sat at number 18 on that same board. It ranks **first on SaaS workflow automation and first on legal task automation**, and third on GDPval-AA v2, the benchmark built to measure real economic work across 44 occupations.<sup class="cite"><a href="#fn3">3</a></sup>
+
+<div class="stat-band">
+<div class="stat"><span class="stat-v">#4 of 189</span><span class="stat-l">Artificial Analysis Intelligence Index, highest open-weight model ever<sup class="cite"><a href="#fn3">3</a></sup></span></div>
+<div class="stat"><span class="stat-v">1,679</span><span class="stat-l">Elo on LMArena Frontend Code, first place, up from #18 for K2.6<sup class="cite"><a href="#fn3">3</a></sup></span></div>
+<div class="stat"><span class="stat-v">3x</span><span class="stat-l">Input price increase from K2.6 to K3<sup class="cite"><a href="#fn4">4</a></sup></span></div>
+<div class="stat"><span class="stat-v">~594 GB</span><span class="stat-l">Quantized open weights, published today under a permissive license<sup class="cite"><a href="#fn5">5</a></sup></span></div>
+</div>
+
+That is not the profile of a cheap substitute. It is the profile of a product.
+
+## Then it raised its price
+
+Kimi K3 lists at **$3 per million input tokens and $15 per million output**, with cached input at 30 cents. K2.6 listed at $0.95 and $4.<sup class="cite"><a href="#fn4">4</a></sup> Threefold on input, nearly fourfold on output, landing precisely on Claude Sonnet 5's rate card.
+
+The reflex reading is that Chinese labs are the deflation engine and everything drifts toward pennies. Moonshot just declined the role. It did not price at 50 cents because it no longer has to. The discount was never a strategy. It was a position, and K3 was the model that let the company leave it.
+
+To see why that matters, it helps to have a unit of account, and the best one on offer arrived two days before K3 shipped. On CNBC on July 14, Chamath Palihapitiya priced generative AI the way you would price crude: one barrel of intelligence equals one million tokens. Crude was trading near $80. The barrel of intelligence, he pointed out, was trading anywhere you liked. "You can buy it from OpenAI for 26 bucks. Anthropic's latest model costs you 56 bucks." And on the other side of the board: "Elon is selling you a barrel of intelligence for a buck. Zuck is about to sell it to you for a buck 50. Demis and Sundar are trying to sell it to you for a dollar. The Chinese will sell it to you for $0.50."<sup class="cite"><a href="#fn1">1</a></sup><sup class="cite"><a href="#fn2">2</a></sup>
 
 <figure class="fig">
 <p class="fig-title">A hundredfold spread on the same barrel</p>
@@ -67,36 +84,21 @@ A hundredfold spread on what is nominally the same product. No commodity market 
 <p class="fig-note">Kimi K3's actual list price is ours, added for context. Every other figure is as cited on air. Prices quoted on television are approximate, blend input and output, and move constantly.</p>
 </figure>
 
-The forward call attached to that board was specific: eventually a company misses earnings by a few cents and traces it straight back to buying $50 barrels when $1 barrels were on the shelf. He was careful to note it "hasn't happened yet."<sup class="cite"><a href="#fn2">2</a></sup>
+A hundredfold spread on what is nominally the same commodity. The forward call attached to it was specific: eventually a company misses earnings by a few cents and traces it straight back to buying $50 barrels when $1 barrels were on the shelf. He was careful to note it "hasn't happened yet."<sup class="cite"><a href="#fn2">2</a></sup>
 
-## Then the cheap barrel raised its price
-
-Here is where the thesis got tested faster than anyone expected.
-
-Kimi K3 shipped on July 16 at **$3 per million input tokens and $15 per million output**, with cached input at 30 cents. Its predecessor, K2.6, listed at $0.95 and $4.<sup class="cite"><a href="#fn4">4</a></sup> That is a threefold increase on input and nearly fourfold on output, landing the model precisely on Claude Sonnet 5's rate card.
-
-<div class="stat-band">
-<div class="stat"><span class="stat-v">3x</span><span class="stat-l">Input price increase from Kimi K2.6 to K3<sup class="cite"><a href="#fn4">4</a></sup></span></div>
-<div class="stat"><span class="stat-v">#4 of 189</span><span class="stat-l">Artificial Analysis Intelligence Index, highest open-weight model ever<sup class="cite"><a href="#fn3">3</a></sup></span></div>
-<div class="stat"><span class="stat-v">1,679</span><span class="stat-l">Elo on LMArena Frontend Code, first place, up from #18 for K2.6<sup class="cite"><a href="#fn3">3</a></sup></span></div>
-<div class="stat"><span class="stat-v">~594 GB</span><span class="stat-l">Quantized open weights, published today under a permissive license<sup class="cite"><a href="#fn5">5</a></sup></span></div>
-</div>
-
-The lazy reading of Chamath's board is that Chinese labs are the deflation engine and everything eventually drifts toward 50 cents. K3 says something sharper. Moonshot did not price at 50 cents because it no longer has to. When your model places fourth of 189 on the independent intelligence index, tops the blind human vote on frontend code against Claude Fable 5 in 76% of matchups, and ranks first on legal and SaaS workflow automation, you are not selling a discount substitute anymore.<sup class="cite"><a href="#fn3">3</a></sup> You are selling the product.
-
-The 50 cent barrel was never a strategy. It was a position, and Moonshot just left it.
+Put K3 on that board and the framing does something useful. It shows you that the 50 cent slot is now empty at the top of the quality curve. The cheapest seller of genuinely near-frontier capability just repriced itself into the middle of the board.
 
 ## The deflation is real. It is not coming from the rate card.
 
-So does that kill the thesis? No. It relocates it.
+So does K3's price hike kill the deflation thesis? No. It relocates it, and this morning is when that became concrete.
 
-This morning Moonshot published the K3 weights: 2.8 trillion parameters, the largest open-weight release in history, quantized to roughly 594GB, under a permissive license.<sup class="cite"><a href="#fn5">5</a></sup> That is the actual event.
+Moonshot published the K3 weights today: 2.8 trillion parameters, quantized to roughly 594GB, under a permissive license.<sup class="cite"><a href="#fn5">5</a></sup> That is the largest open-weight release in history and the actual event of this cycle.
 
 Once a near-frontier model is a file you can download, the price of a barrel stops being a pricing decision and becomes an infrastructure question. What does it cost *you* to serve it. No lab sets that number. No rate card defends it. The floor is whoever has GPUs and the engineering depth to run a 2.8T mixture-of-experts model in production, and that floor falls on a hardware curve rather than a competitive one.
 
-Chamath's rationalization is coming. It will not look like OpenAI cutting to a dollar. It will look like a growing share of enterprise workload quietly never touching a frontier API at all.
+The rationalization is coming. It will not look like OpenAI cutting to a dollar. It will look like a growing share of enterprise workload quietly never touching a frontier API at all.
 
-And the honest version of the cost picture is not the rate card anyway. It is cost per completed task, which folds in how many tokens a model burns to get there. K3 is verbose, generating roughly double the reasoning output of a typical reasoning model, which eats into its rate-card advantage.<sup class="cite"><a href="#fn4">4</a></sup>
+The honest version of the cost picture is not the rate card anyway. It is cost per completed task, which folds in how many tokens a model burns to get there. K3 is verbose, generating roughly double the reasoning output of a typical reasoning model, which eats into its headline advantage.<sup class="cite"><a href="#fn4">4</a></sup>
 
 <figure class="fig">
 <p class="fig-title">The refined price, not the rate card</p>
@@ -140,11 +142,11 @@ And the honest version of the cost picture is not the rate card anyway. It is co
 <p class="fig-note">K3 is cheaper per task than the closed leaders, and roughly twenty times more expensive than DeepSeek V4 Pro. It collapsed the price of top-tier capability. It did not become the cheapest thing available.</p>
 </figure>
 
-## Crude has grades. So does intelligence.
+## The part the price board cannot show you
 
-This is the part of the metaphor worth sitting with, and it is where the barrel framing quietly breaks in the most instructive way.
+Here is where the commodity framing quietly breaks, and it is the most useful thing in this whole release.
 
-Crude is not one thing. There is WTI, there is Brent, there is heavy sour, and the spread between them exists because they cost different amounts to refine and yield different products. A barrel price without a grade is a number with no meaning attached.
+Crude is not one thing. There is WTI, there is Brent, there is heavy sour, and the spread between them exists because they cost different amounts to refine and yield different products. A barrel price without a grade attached is a number with no meaning.
 
 Intelligence works the same way, and K3 demonstrates it in the least flattering way possible. Its factual accuracy climbed from 33% to 46% generation over generation, which is real progress. But its non-hallucination score sits at 49%, meaning that when K3 does not know something, it fabricates a confident answer more than half the time rather than hedging or abstaining.<sup class="cite"><a href="#fn3">3</a></sup><sup class="cite"><a href="#fn6">6</a></sup>
 
@@ -188,28 +190,28 @@ Intelligence works the same way, and K3 demonstrates it in the least flattering 
 
 The grading problem runs deeper than one metric. The coding scores everyone quoted came from at least three different agent harnesses mixed into a single table. Harness choice alone moves these numbers by 10 to 26 points. Claude Opus 4.8 shows a 17.3 point spread on one benchmark depending on whose harness ran it, 69.2% versus 51.9%.<sup class="cite"><a href="#fn3">3</a></sup> The number you are comparing is never the model in isolation. It is the model plus its prompt, tools, retry logic, timeouts and context management. One analysis put the gap between lab benchmark scores and real-world deployment performance at roughly 37% across the industry.<sup class="cite"><a href="#fn6">6</a></sup>
 
-So a $56 barrel and a $3 barrel can post similar headline numbers and still be materially different grades of crude. The spread Chamath pointed at is real. Some meaningful fraction of it is also the price of a product that abstains when it does not know.
+So a $56 barrel and a $3 barrel can post similar headline numbers and still be materially different grades. The spread on the price board is real. Some meaningful fraction of it is also the price of a model that abstains when it does not know.
 
 ## The honest caveats
 
-**We are pricing off self-reported numbers.** Moonshot had not published a technical report at launch, so training data and decontamination procedures remain undisclosed.<sup class="cite"><a href="#fn3">3</a></sup> **Open weights are free to license, not free to run.** A 2.8T model at roughly 594GB quantized is a serious infrastructure commitment, and the real bill is compute, storage, networking and the engineers who can keep it up. **And the price board moves weekly.** Every figure here is a snapshot of a market repricing itself faster than anyone can publish. Underwrite the direction, not the decimal.
+**We are pricing off self-reported numbers.** Moonshot had not published a technical report at launch, so training data and decontamination procedures remain undisclosed.<sup class="cite"><a href="#fn3">3</a></sup> **Open weights are free to license, not free to run.** A 2.8T model at roughly 594GB quantized is a serious infrastructure commitment, and the real bill is compute, storage, networking and the engineers who can keep it up. **And the board moves weekly.** Every figure here is a snapshot of a market repricing itself faster than anyone can publish. Underwrite the direction, not the decimal.
 
 ## The bottom line
 
-Chamath is right that a hundredfold spread on a commodity input is not a stable equilibrium. Paying fifty times for tokens is not a defensible line item, and finance departments find those eventually.
+K3 is the clearest signal yet that near-frontier capability has stopped being scarce and started being a product decision. A Chinese lab built the largest open model in history, placed fourth in the world with it, charged Sonnet prices for it, and then gave the weights away on schedule. Each of those four facts contradicts a different assumption the market was carrying six months ago.
 
-But he priced the crude, and the value has already moved to the refinery. The scarce thing in 2026 is not access to a capable model. As of this morning that is a download. The scarce thing is knowing which grade of intelligence your specific workload can tolerate, building the harness that extracts twenty extra points from identical weights, and having the evaluation discipline to catch a 51% fabrication rate before your customers do.
+A hundredfold spread on a commodity input is not a stable equilibrium, and finance departments eventually find line items like that. But the value has already moved past the crude and into the refinery. The scarce thing in 2026 is not access to a capable model. As of this morning that is a download. The scarce thing is knowing which grade of intelligence your specific workload can tolerate, building the harness that extracts twenty extra points from identical weights, and having the evaluation discipline to catch a 51% fabrication rate before your customers do.
 
 The cheap barrels have arrived. Most companies still have no refinery.
 
 <div class="takeaways">
 <h3>The five things to remember</h3>
 <ol>
-<li><strong>The spread is the story.</strong> A million tokens costs anywhere from 50 cents to $56 depending on the seller. No commodity sustains a hundredfold spread indefinitely.</li>
-<li><strong>The cheap barrel raised its price.</strong> Kimi K3 tripled input pricing to $3 and quadrupled output to $15, matching Claude Sonnet 5, because a top-four model does not need to sell at a discount.</li>
+<li><strong>K3 is a product now, not a discount.</strong> Fourth of 189 on the independent index, first on frontend code by blind human vote, first on legal and SaaS automation.</li>
+<li><strong>It raised its price to prove it.</strong> Input tripled to $3 and output nearly quadrupled to $15, matching Claude Sonnet 5. The 50 cent slot at the top of the quality curve is now empty.</li>
+<li><strong>The spread is still the story.</strong> A million tokens costs anywhere from 50 cents to $56 depending on the seller. No commodity sustains a hundredfold spread indefinitely.</li>
 <li><strong>Deflation arrives through weights, not rate cards.</strong> With K3 open as of today, the price of near-frontier capability becomes an infrastructure question no lab controls.</li>
-<li><strong>Barrels have grades.</strong> K3 fabricates confidently 51% of the time it is uncertain, versus 36% for Opus and 28% for GLM. That gap is part of what the premium buys.</li>
-<li><strong>The refinery is the moat.</strong> Harness and evaluation choices swing benchmark results 10 to 26 points on identical weights. That is where the durable advantage now sits.</li>
+<li><strong>Barrels have grades.</strong> K3 fabricates confidently 51% of the time it is uncertain, versus 36% for Opus and 28% for GLM. Harness choices swing benchmark results another 10 to 26 points on identical weights. That is where the durable advantage sits.</li>
 </ol>
 </div>
 
