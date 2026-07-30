@@ -1,10 +1,28 @@
+import { createElement } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { marked } from 'marked'
 import { posts, formatDate } from '../lib/posts.js'
 import Cover from '../lib/covers.jsx'
 import Share from '../components/Share.jsx'
+import { charts, CHART_TOKEN } from '../components/charts/index.js'
 
 marked.setOptions({ gfm: true })
+
+// Splits a body on `[[chart:key]]` lines into an array of markdown strings and
+// chart keys, so interactive figures can be React while the prose stays markdown.
+function splitBody(body) {
+  const parts = []
+  let last = 0
+  CHART_TOKEN.lastIndex = 0
+  let m
+  while ((m = CHART_TOKEN.exec(body)) !== null) {
+    parts.push({ md: body.slice(last, m.index) })
+    parts.push({ chart: m[1] })
+    last = m.index + m[0].length
+  }
+  parts.push({ md: body.slice(last) })
+  return parts.filter((p) => (p.chart ? charts[p.chart] : p.md.trim()))
+}
 
 export default function Post() {
   const { slug } = useParams()
@@ -31,10 +49,15 @@ export default function Post() {
         <h1>{post.title}</h1>
       </header>
 
-      <article
-        className="article"
-        dangerouslySetInnerHTML={{ __html: marked.parse(post.body) }}
-      />
+      <article className="article">
+        {splitBody(post.body).map((part, i) =>
+          part.chart ? (
+            createElement(charts[part.chart], { key: i })
+          ) : (
+            <div key={i} dangerouslySetInnerHTML={{ __html: marked.parse(part.md) }} />
+          )
+        )}
+      </article>
 
       <Share slug={post.slug} title={post.title} />
 

@@ -264,8 +264,32 @@ function artBarrel() {
   return s
 }
 
+// The margin call: the levered climb, then the stepped cascade of the unwind.
+// Mirrors the in-article cover art in src/lib/covers.jsx.
+function artMarginCall() {
+  const rungs = [
+    { x: 982, y: 262 },
+    { x: 1024, y: 316 },
+    { x: 1066, y: 368 },
+    { x: 1108, y: 418 },
+  ]
+  let s = ''
+  ;[200, 315, 430].forEach((y) => {
+    s += `<line x1="722" y1="${y}" x2="1124" y2="${y}" stroke="${INK}" stroke-opacity="0.1"/>`
+  })
+  s += `<polyline points="726,428 780,415 834,388 888,320 940,208" fill="none" stroke="${INK}" stroke-opacity="0.85" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>`
+  s += `<circle cx="940" cy="208" r="6" fill="${INK}"/>`
+  rungs.forEach((r, i) => {
+    const p = i === 0 ? { x: 940, y: 208 } : rungs[i - 1]
+    s += `<line x1="${p.x}" y1="${p.y}" x2="${r.x}" y2="${r.y}" stroke="${INK}" stroke-opacity="${(0.6 - i * 0.08).toFixed(2)}" stroke-width="2.6" stroke-linecap="round"/>`
+    s += `<rect x="${r.x - 3}" y="${r.y}" width="6" height="${452 - r.y}" fill="${INK}" fill-opacity="${(0.16 - i * 0.025).toFixed(3)}"/>`
+  })
+  return s
+}
+
 const ART = {
   'the-token-economy': artTokenEconomy,
+  'the-margin-call': artMarginCall,
   'the-measuring-stick': artMeasuringStick,
   'the-gigawatt-land-grab': artGigawatt,
   'the-deepseek-discount': artDeepseek,

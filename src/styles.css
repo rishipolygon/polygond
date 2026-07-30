@@ -1610,6 +1610,125 @@ h1, h2, h3 {
 .chart-legend span { display: inline-flex; align-items: center; gap: 0.5rem; }
 .chart-legend i { width: 0.85rem; height: 0.85rem; display: inline-block; background: currentColor; }
 
+/* ——— interactive figure: controls + live readout ———
+   Same plate as figure.fig, plus range inputs and a computed
+   readout strip. Monochrome: everything is currentColor. */
+.article figure.fig-live {
+  border-color: var(--line-strong);
+}
+.live-controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem 2rem;
+  margin: 0 0 1.6rem;
+}
+.live-ctl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.live-ctl-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.live-ctl-head b {
+  font-family: 'Sora Variable', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.live-ctl-foot {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+.live-ctl input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1.1rem;
+  background: transparent;
+  cursor: ew-resize;
+  margin: 0;
+}
+.live-ctl input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--line-strong);
+}
+.live-ctl input[type='range']::-moz-range-track {
+  height: 2px;
+  background: var(--line-strong);
+}
+.live-ctl input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-top: -0.39rem;
+  border-radius: 50%;
+  background: var(--fg);
+  border: none;
+}
+.live-ctl input[type='range']::-moz-range-thumb {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--fg);
+  border: none;
+}
+.live-ctl input[type='range']:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 4px;
+}
+.live-readout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-top: 1.4rem;
+}
+.live-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem 0.95rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.live-v {
+  font-family: 'Sora Variable', sans-serif;
+  font-weight: 480;
+  font-size: clamp(1.15rem, 3.2vw, 1.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.live-l {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+@media (max-width: 620px) {
+  .live-controls { grid-template-columns: 1fr; }
+  .live-readout { grid-template-columns: 1fr; }
+  /* the stacked index markers shrink below legibility on a phone; the readout
+     cells below say the same thing in real text */
+  .fig-live svg .fig-markers { display: none; }
+}
+
 /* ——— callout ——— */
 .article .callout {
   border-left: 2px solid var(--fg);

@@ -6,6 +6,20 @@
     <description>Market analysis with conviction. We tell you what we think is happening and why it matters.</description>
     <language>en</language>
     <item>
+      <title>The margin call: how Korea's leveraged chip trade liquidated 1.2 million people</title>
+      <link>https://polygond.com/blog/the-margin-call</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-margin-call</guid>
+      <pubDate>Thu, 30 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The KOSPI doubled in six months, then gave back more in one month than it did in 1997 or 2008. The index number is not the story. The story is that 1.2 million retail margin accounts got called and up to 460,000 were sold out by their own brokers. Here is the machine that did it, and an interactive chart that shows you exactly where a levered position dies.</description>
+    </item>
+    <item>
+      <title>Kimi K3 did not undercut the frontier, it joined it: the largest open model ever and the price of intelligence</title>
+      <link>https://polygond.com/blog/the-barrel-of-intelligence</link>
+      <guid isPermaLink="true">https://polygond.com/blog/the-barrel-of-intelligence</guid>
+      <pubDate>Mon, 27 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Moonshot released Kimi K3 on July 16 and published the weights this morning. The model placed fourth of 189 on the independent intelligence index, and it listed at $3 per million input tokens, roughly triple what the previous Kimi costs. Moonshot did not raise anyone's prices. It launched a model a full weight class up and charged accordingly. Here is what that says about what a unit of intelligence is actually worth, why the deflation everyone is waiting for arrives through downloads rather than rate cards, and why the grade of the barrel matters more than the price of it.</description>
+    </item>
+    <item>
       <title>The Kimi shock: China's largest open model reprices the AI trade</title>
       <link>https://polygond.com/blog/the-kimi-shock</link>
       <guid isPermaLink="true">https://polygond.com/blog/the-kimi-shock</guid>

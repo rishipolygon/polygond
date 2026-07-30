@@ -348,6 +348,67 @@ function BarrelOfIntelligence() {
   )
 }
 
+// ——— The margin call: a levered climb, then the vertical break ———
+function MarginCallCover() {
+  // the run-up is drawn solid; the unwind falls away as a stepped cascade
+  const rungs = [
+    { x: 470, y: 108 },
+    { x: 520, y: 170 },
+    { x: 570, y: 232 },
+    { x: 620, y: 294 },
+    { x: 670, y: 352 },
+  ]
+  return (
+    <Frame>
+      <g stroke="currentColor" strokeOpacity="0.1">
+        <line x1="84" y1="108" x2="716" y2="108" />
+        <line x1="84" y1="236" x2="716" y2="236" />
+        <line x1="84" y1="364" x2="716" y2="364" />
+      </g>
+      {/* the doubling */}
+      <polyline
+        points="84,362 168,340 252,300 336,236 420,150 462,96"
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.85"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="462" cy="96" r="5" fill="currentColor" />
+      {/* the unwind, each step a tier of collateral failing */}
+      {rungs.map((r, i) => (
+        <g key={i}>
+          <line
+            x1={i === 0 ? 462 : rungs[i - 1].x}
+            y1={i === 0 ? 96 : rungs[i - 1].y}
+            x2={r.x}
+            y2={r.y}
+            stroke="currentColor"
+            strokeOpacity={0.6 - i * 0.08}
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          />
+          <rect
+            x={r.x - 3}
+            y={r.y}
+            width="6"
+            height={396 - r.y}
+            fill="currentColor"
+            fillOpacity={0.16 - i * 0.02}
+          />
+        </g>
+      ))}
+      <text x="84" y="42" fill="currentColor" fillOpacity="0.62" style={mono}>
+        9,385.59 ▼ 5,593.56
+      </text>
+      <text x="716" y="42" textAnchor="end" fill="currentColor" fillOpacity="0.62" style={mono}>
+        1.2M CALLED
+      </text>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -366,6 +427,7 @@ const covers = {
   'the-deepseek-discount': DeepseekDiscount,
   'the-kimi-shock': KimiShock,
   'the-barrel-of-intelligence': BarrelOfIntelligence,
+  'the-margin-call': MarginCallCover,
 }
 
 export function hasCover(slug) {
