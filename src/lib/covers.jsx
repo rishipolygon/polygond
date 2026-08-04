@@ -409,6 +409,71 @@ function MarginCallCover() {
   )
 }
 
+// ——— The forced seller: a vertical run, a collapse into one block, then the
+// bounce the seller never got to see ———
+function ForcedSeller() {
+  // the five positions that reprised once the forced seller was gone
+  const bounce = [
+    { x: 512, h: 84 },
+    { x: 552, h: 82 },
+    { x: 592, h: 79 },
+    { x: 632, h: 76 },
+    { x: 672, h: 64 },
+  ]
+  const base = 372
+  return (
+    <Frame>
+      <g stroke="currentColor" strokeOpacity="0.1">
+        <line x1="84" y1="108" x2="716" y2="108" />
+        <line x1="84" y1="240" x2="716" y2="240" />
+        <line x1="84" y1={base} x2="716" y2={base} />
+      </g>
+      {/* the run: 439% in six months */}
+      <polyline
+        points="84,356 156,332 228,286 300,214 356,124 392,86"
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.85"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="392" cy="86" r="5" fill="currentColor" />
+      {/* the drop: one month, no steps, no stopping */}
+      <line
+        x1="392"
+        y1="86"
+        x2="452"
+        y2={base}
+        stroke="currentColor"
+        strokeOpacity="0.55"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      {/* the block: the entire public book, transferred in one print */}
+      <rect x="452" y={base - 30} width="34" height="30" fill="currentColor" fillOpacity="0.9" />
+      {/* the bounce the seller no longer owned */}
+      {bounce.map((b, i) => (
+        <rect
+          key={i}
+          x={b.x}
+          y={base - b.h}
+          width="20"
+          height={b.h}
+          fill="currentColor"
+          fillOpacity={0.34 - i * 0.04}
+        />
+      ))}
+      <text x="84" y="42" fill="currentColor" fillOpacity="0.62" style={mono}>
+        +439% ▼ −67%
+      </text>
+      <text x="716" y="42" textAnchor="end" fill="currentColor" fillOpacity="0.62" style={mono}>
+        SOLD IN ONE PRINT
+      </text>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -428,6 +493,7 @@ const covers = {
   'the-kimi-shock': KimiShock,
   'the-barrel-of-intelligence': BarrelOfIntelligence,
   'the-margin-call': MarginCallCover,
+  'the-forced-seller': ForcedSeller,
 }
 
 export function hasCover(slug) {

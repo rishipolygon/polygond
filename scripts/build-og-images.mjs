@@ -287,9 +287,35 @@ function artMarginCall() {
   return s
 }
 
+// The forced seller: the run, the drop, the single block, then the bounce the
+// seller no longer owned. Mirrors the in-article cover art in src/lib/covers.jsx.
+function artForcedSeller() {
+  const bounce = [
+    { x: 976, h: 62 },
+    { x: 1006, h: 61 },
+    { x: 1036, h: 59 },
+    { x: 1066, h: 56 },
+    { x: 1096, h: 47 },
+  ]
+  const base = 452
+  let s = ''
+  ;[200, 315, 430].forEach((y) => {
+    s += `<line x1="722" y1="${y}" x2="1124" y2="${y}" stroke="${INK}" stroke-opacity="0.1"/>`
+  })
+  s += `<polyline points="726,436 770,420 814,388 858,322 900,206" fill="none" stroke="${INK}" stroke-opacity="0.85" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>`
+  s += `<circle cx="900" cy="206" r="6" fill="${INK}"/>`
+  s += `<line x1="900" y1="206" x2="936" y2="${base}" stroke="${INK}" stroke-opacity="0.55" stroke-width="2.6" stroke-linecap="round"/>`
+  s += `<rect x="936" y="${base - 34}" width="22" height="34" fill="${INK}" fill-opacity="0.9"/>`
+  bounce.forEach((b, i) => {
+    s += `<rect x="${b.x}" y="${base - b.h}" width="22" height="${b.h}" fill="${INK}" fill-opacity="${(0.34 - i * 0.04).toFixed(2)}"/>`
+  })
+  return s
+}
+
 const ART = {
   'the-token-economy': artTokenEconomy,
   'the-margin-call': artMarginCall,
+  'the-forced-seller': artForcedSeller,
   'the-measuring-stick': artMeasuringStick,
   'the-gigawatt-land-grab': artGigawatt,
   'the-deepseek-discount': artDeepseek,
