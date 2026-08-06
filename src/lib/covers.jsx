@@ -474,6 +474,48 @@ function ForcedSeller() {
   )
 }
 
+// ——— The crown jewel: a fifth of the asset cut out, offered, and never taken ———
+function CrownJewel() {
+  const cx = 392
+  const cy = 225
+  const r = 116
+  const off = 40 // how far the detached wedge sits from the body it came from
+  const a1 = (-36 * Math.PI) / 180
+  const a2 = (36 * Math.PI) / 180
+  const p = (a, dx = 0) => [cx + dx + r * Math.cos(a), cy + r * Math.sin(a)]
+  const [x1, y1] = p(a1)
+  const [x2, y2] = p(a2)
+  const [ox1, oy1] = p(a1, off)
+  const [ox2, oy2] = p(a2, off)
+  // the 80% that stays with the governing body, drawn the long way round
+  const body = `M ${cx},${cy} L ${x2},${y2} A ${r} ${r} 0 1 1 ${x1},${y1} Z`
+  // the 20% that was priced, separated from the whole it depends on
+  const wedge = `M ${cx + off},${cy} L ${ox1},${oy1} A ${r} ${r} 0 0 1 ${ox2},${oy2} Z`
+  return (
+    <Frame>
+      <circle cx={cx} cy={cy} r={r + 26} fill="none" stroke="currentColor" strokeOpacity="0.12" />
+      <path d={body} fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeOpacity="0.55" strokeWidth="2.2" />
+      {/* panel seams: the whole is assembled from parts that arrive separately */}
+      <g stroke="currentColor" strokeOpacity="0.16" strokeWidth="1.4">
+        <line x1={cx} y1={cy} x2={cx + r * Math.cos((150 * Math.PI) / 180)} y2={cy + r * Math.sin((150 * Math.PI) / 180)} />
+        <line x1={cx} y1={cy} x2={cx + r * Math.cos((210 * Math.PI) / 180)} y2={cy + r * Math.sin((210 * Math.PI) / 180)} />
+        <line x1={cx} y1={cy} x2={cx} y2={cy - r} />
+        <line x1={cx} y1={cy} x2={cx} y2={cy + r} />
+      </g>
+      <path d={wedge} fill="currentColor" fillOpacity="0.04" stroke="currentColor" strokeOpacity="0.6" strokeWidth="2" strokeDasharray="6 5" />
+      <text x={cx + off + 74} y={cy + 6} textAnchor="middle" fill="currentColor" fillOpacity="0.7" style={mono}>
+        20%
+      </text>
+      <text x="84" y="42" fill="currentColor" fillOpacity="0.62" style={mono}>
+        $20BN VALUATION
+      </text>
+      <text x="716" y="42" textAnchor="end" fill="currentColor" fillOpacity="0.62" style={mono}>
+        WITHDRAWN IN 4 DAYS
+      </text>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -494,6 +536,7 @@ const covers = {
   'the-barrel-of-intelligence': BarrelOfIntelligence,
   'the-margin-call': MarginCallCover,
   'the-forced-seller': ForcedSeller,
+  'the-crown-jewel': CrownJewel,
 }
 
 export function hasCover(slug) {
