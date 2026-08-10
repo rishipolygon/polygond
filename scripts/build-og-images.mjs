@@ -312,7 +312,27 @@ function artForcedSeller() {
   return s
 }
 
+// ——— The borrowed hand: a year of drift, one official notch, half of it returned ———
+function artBorrowedHand() {
+  return `
+    <g stroke="${INK}" stroke-opacity="0.16" stroke-dasharray="5 6">
+      <line x1="712" y1="240" x2="1124" y2="240"/>
+      <line x1="712" y1="338" x2="1124" y2="338"/>
+    </g>
+    <polyline points="716,400 758,392 800,378 842,368 884,348 926,330 968,302 1010,240" fill="none" stroke="${INK}" stroke-opacity="0.75" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1010,240 1032,306 1050,338" fill="none" stroke="${INK}" stroke-opacity="0.9" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1050,338 1086,306 1120,286" fill="none" stroke="${INK}" stroke-opacity="0.5" stroke-width="2.6" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="${INK}" stroke-linecap="round" stroke-width="2.6">
+      <line x1="1022" y1="384" x2="1022" y2="352" stroke-opacity="0.55"/>
+      <line x1="1042" y1="396" x2="1042" y2="364" stroke-opacity="0.28"/>
+    </g>
+    <circle cx="1010" cy="240" r="5.5" fill="${INK}"/>
+    <circle cx="1050" cy="338" r="4.8" fill="${INK}" fill-opacity="0.6"/>
+    <circle cx="1120" cy="286" r="6" fill="${INK}"/>`
+}
+
 const ART = {
+  'the-borrowed-hand': artBorrowedHand,
   'the-token-economy': artTokenEconomy,
   'the-margin-call': artMarginCall,
   'the-forced-seller': artForcedSeller,

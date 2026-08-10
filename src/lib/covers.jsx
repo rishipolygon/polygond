@@ -516,6 +516,70 @@ function CrownJewel() {
   )
 }
 
+// ——— The borrowed hand: a trend, one intervention notch, and half of it returned ———
+function BorrowedHand() {
+  const peak = { x: 546, y: 150 } // 163.73, the forty-year low
+  const trough = { x: 612, y: 290 } // 155.20, the bought level
+  const end = { x: 716, y: 206 } // roughly half the move handed back
+  const trend = '84,330 150,318 216,300 282,288 348,262 414,240 480,206 546,150'
+  const notch = `546,150 578,248 ${trough.x},${trough.y}`
+  const giveback = `${trough.x},${trough.y} 664,236 ${end.x},${end.y}`
+  return (
+    <Frame>
+      {/* the level that was defended, and the level it was defended to */}
+      <g stroke="currentColor" strokeOpacity="0.16" strokeDasharray="5 6">
+        <line x1="84" y1={peak.y} x2="716" y2={peak.y} />
+        <line x1="84" y1={trough.y} x2="716" y2={trough.y} />
+      </g>
+      {/* the year, drawn one way */}
+      <polyline
+        points={trend}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.75"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* the two sessions of official buying */}
+      <polyline
+        points={notch}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.9"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* what the flow took back */}
+      <polyline
+        points={giveback}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity="0.5"
+        strokeWidth="2.4"
+        strokeDasharray="7 6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* the borrowed hand: two bids beneath the notch, the second a lighter weight */}
+      <g stroke="currentColor" strokeLinecap="round">
+        <line x1="562" y1="330" x2="562" y2="298" strokeOpacity="0.55" strokeWidth="2.4" />
+        <line x1="592" y1="342" x2="592" y2="312" strokeOpacity="0.28" strokeWidth="2.4" />
+      </g>
+      <circle cx={peak.x} cy={peak.y} r="5" fill="currentColor" />
+      <circle cx={trough.x} cy={trough.y} r="4.5" fill="currentColor" fillOpacity="0.6" />
+      <circle cx={end.x} cy={end.y} r="5.5" fill="currentColor" />
+      <text x="84" y="42" fill="currentColor" fillOpacity="0.62" style={mono}>
+        163.73 ▼ 155.20
+      </text>
+      <text x="716" y="42" textAnchor="end" fill="currentColor" fillOpacity="0.62" style={mono}>
+        HALF BACK IN 5 DAYS
+      </text>
+    </Frame>
+  )
+}
+
 function Fallback() {
   return (
     <Frame>
@@ -537,6 +601,7 @@ const covers = {
   'the-margin-call': MarginCallCover,
   'the-forced-seller': ForcedSeller,
   'the-crown-jewel': CrownJewel,
+  'the-borrowed-hand': BorrowedHand,
 }
 
 export function hasCover(slug) {
