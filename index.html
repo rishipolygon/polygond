@@ -32,6 +32,73 @@
         document.documentElement.dataset.theme = t;
       })();
     </script>
+    <script>
+      // Self-heal a dead boot.
+      //
+      // GitHub Pages serves this HTML with `Cache-Control: max-age=600` and no
+      // revalidation, while every deploy renames the hashed bundle and deletes the
+      // old one. So a returning visitor can be handed ten-minute-old HTML whose
+      // <script src> no longer exists. That request 404s (as text/html, not JS),
+      // the module never runs, and the page stays blank. A plain reload replays the
+      // same cached HTML, so it stays blank a second time too.
+      //
+      // Detect the dead boot and re-fetch this document past the HTTP cache, once.
+      (function () {
+        var KEY = 'pd-boot-retry';
+        var done = false;
+
+        function booted() {
+          var root = document.getElementById('root');
+          return !!(root && root.childElementCount > 0);
+        }
+
+        function retry() {
+          if (done || booted()) return;
+          done = true;
+          // One retry per tab, so a genuinely broken build can never loop.
+          if (sessionStorage.getItem(KEY)) {
+            // The retry did not help, so stop and say so rather than sit blank.
+            var root = document.getElementById('root');
+            if (root) {
+              root.innerHTML =
+                '<div style="max-width:32rem;margin:20vh auto;padding:0 1.5rem;' +
+                'font:400 15px/1.6 system-ui,sans-serif;color:#8b8f96;text-align:center">' +
+                '<p style="color:#e8e9eb;font-size:17px;margin:0 0 .5rem">This page did not load.</p>' +
+                '<p style="margin:0 0 1.25rem">Usually a stale cache. A hard reload clears it.</p>' +
+                '<a href="/" style="color:#e8e9eb">Back to polygond.com</a></div>';
+            }
+            return;
+          }
+          sessionStorage.setItem(KEY, '1');
+          // `cache: 'reload'` refetches the document from the network and rewrites
+          // the stale cache entry, so the reload below gets the current asset tags.
+          fetch(location.href, { cache: 'reload', credentials: 'same-origin' })
+            .then(function () { location.reload(); })
+            .catch(function () { location.reload(); });
+        }
+
+        // Fast path: the bundle itself failed to load or parse.
+        window.addEventListener(
+          'error',
+          function (e) {
+            if (e.target && e.target !== window && e.target.tagName === 'SCRIPT') retry();
+          },
+          true
+        );
+
+        // Backstop: anything else that stops React from mounting.
+        window.addEventListener('load', function () {
+          if (booted()) {
+            sessionStorage.removeItem(KEY);
+            return;
+          }
+          setTimeout(function () {
+            if (booted()) sessionStorage.removeItem(KEY);
+            else retry();
+          }, 2000);
+        });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
