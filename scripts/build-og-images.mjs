@@ -331,7 +331,27 @@ function artBorrowedHand() {
     <circle cx="1120" cy="286" r="6" fill="${INK}"/>`
 }
 
+// ——— The key man: one hub, every spoke runs through it, one line runs outside ———
+function artKeyMan() {
+  const hx = 880, hy = 315, n = 15
+  let lines = '', dots = ''
+  for (let i = 0; i < n; i++) {
+    const a = (Math.PI * 2 * i) / n - Math.PI / 2
+    const r = i % 2 ? 120 : 140
+    const x = (hx + Math.cos(a) * r).toFixed(1), y = (hy + Math.sin(a) * r * 0.85).toFixed(1)
+    lines += `<line x1="${hx}" y1="${hy}" x2="${x}" y2="${y}"/>`
+    dots += `<circle cx="${x}" cy="${y}" r="4.5"/>`
+  }
+  return `
+    <g stroke="${INK}" stroke-opacity="0.32" stroke-width="1.6">${lines}</g>
+    <g fill="${INK}" fill-opacity="0.55">${dots}</g>
+    <line x1="${hx}" y1="${hy}" x2="1110" y2="200" stroke="${INK}" stroke-opacity="0.8" stroke-width="2.6" stroke-dasharray="8 7" stroke-linecap="round"/>
+    <circle cx="1110" cy="200" r="8" fill="none" stroke="${INK}" stroke-width="2.6"/>
+    <circle cx="${hx}" cy="${hy}" r="13" fill="${INK}"/>`
+}
+
 const ART = {
+  'the-key-man': artKeyMan,
   'the-borrowed-hand': artBorrowedHand,
   'the-token-economy': artTokenEconomy,
   'the-margin-call': artMarginCall,
