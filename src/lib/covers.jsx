@@ -591,6 +591,46 @@ function Fallback() {
   )
 }
 
+// ——— The key man: one hub, every spoke runs through it, one line runs outside ———
+function KeyMan() {
+  const hub = { x: 330, y: 225 }
+  const n = 15
+  const nodes = Array.from({ length: n }, (_, i) => {
+    const a = (Math.PI * 2 * i) / n - Math.PI / 2
+    const r = i % 2 ? 150 : 175
+    return { x: hub.x + Math.cos(a) * r, y: hub.y + Math.sin(a) * r * 0.82 }
+  })
+  const outside = { x: 660, y: 70 }
+  return (
+    <Frame>
+      <g stroke="currentColor" strokeOpacity="0.32" strokeWidth="1.6">
+        {nodes.map((p, i) => (
+          <line key={i} x1={hub.x} y1={hub.y} x2={p.x} y2={p.y} />
+        ))}
+      </g>
+      <g fill="currentColor" fillOpacity="0.55">
+        {nodes.map((p, i) => (
+          <circle key={i} cx={p.x} cy={p.y} r="5" />
+        ))}
+      </g>
+      {/* the one line that leaves the org chart */}
+      <line
+        x1={hub.x}
+        y1={hub.y}
+        x2={outside.x}
+        y2={outside.y}
+        stroke="currentColor"
+        strokeOpacity="0.8"
+        strokeWidth="2.4"
+        strokeDasharray="8 7"
+        strokeLinecap="round"
+      />
+      <circle cx={outside.x} cy={outside.y} r="9" fill="none" stroke="currentColor" strokeWidth="2.4" />
+      <circle cx={hub.x} cy={hub.y} r="16" fill="currentColor" />
+    </Frame>
+  )
+}
+
 const covers = {
   'the-token-economy': TokenEconomy,
   'the-measuring-stick': MeasuringStick,
@@ -602,6 +642,7 @@ const covers = {
   'the-forced-seller': ForcedSeller,
   'the-crown-jewel': CrownJewel,
   'the-borrowed-hand': BorrowedHand,
+  'the-key-man': KeyMan,
 }
 
 export function hasCover(slug) {

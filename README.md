@@ -32,6 +32,12 @@ Minimal black-and-white research site. React + Vite, posts in plain Markdown, de
 
 Posts are sorted by `date` (newest first). Drafts: just don't push the file until it's ready.
 
+## Posting with Claude (/post)
+
+In a Claude Code session on this repo, type `/post <topic>` (or just ask "make a post on X and post it"). The project skill in `.claude/skills/post/SKILL.md` researches the topic, writes the note in the house layout, draws the cover and share-card art, runs `npm run check:post` and the build, then commits and gets it onto `main`, which deploys.
+
+`npm run check:post -- <slug>` can also be run by hand. It checks the front matter, flags em dashes, catches footnotes that point nowhere, and makes sure the cover art, OG image and RSS entry exist.
+
 ## Market ticker
 
 The home page shows three scrolling tickers (equities / crypto / commodities) fed by `public/market.json`. Refresh it any time with:
