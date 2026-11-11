@@ -12,7 +12,8 @@
     "rss": "node scripts/build-rss.mjs",
     "og": "node scripts/build-og-images.mjs",
     "stories": "node scripts/build-story-cards.mjs",
-    "cards": "node scripts/build-og-images.mjs && node scripts/build-story-cards.mjs"
+    "cards": "node scripts/build-og-images.mjs && node scripts/build-story-cards.mjs",
+    "check:post": "node scripts/check-post.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.5",
